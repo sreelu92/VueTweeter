@@ -1,0 +1,80 @@
+<template>
+  <div id="container">
+    <p class="ptagStyling">Email</p>
+    <input type="text" id="email-input" v-model="email" />
+    <p class="ptagStyling">Password</p>
+    <input type="password" id="password-input" v-model="password" />
+    <h2 @click="loginUser" id="loginStyling">Login</h2>
+    <h3>{{ loginStatus }}</h3>
+  </div>
+</template>
+
+<script>
+import axios from "axios";
+import cookies from "vue-cookies";
+export default {
+  data() {
+    return {
+      email: "",
+      password: "",
+      loginStatus: ""
+    };
+  },
+  methods: {
+    loginUser: function() {
+      this.loginStatus = "Loading";
+      axios
+        .request({
+          url: "https://tweeterest.ml/api/login",
+
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "X-Api-Key": "5GakGJ6glNqzt5rxIP5ON3KkBIgrLaZODehane6UFhUzc"
+          },
+          data: {
+            email: this.email,
+            password: this.password
+          }
+        })
+        .then(response => {
+          //check if login token sent
+          if (response.data.loginToken == undefined) {
+            this.$router.push({ name: "login-page" });
+          } else {
+            console.log(response);
+            this.loginStatus = "success";
+            cookies.set("loginToken", response.data.loginToken);
+            this.$store.commit('username',response.data.username);
+            this.$store.commit("userId",response.data.userId);
+            //send usernto home page
+            this.$router.push({ name: "home-page" });
+
+            
+          }
+        })
+        .catch(error => {
+          //show user login failure
+          console.log(error);
+          this.loginStatus = "Invalid Login";
+        });
+    }
+  }
+};
+</script>
+
+<style lang="scss" scoped>
+#container {
+  .ptagStyling {
+    font-size: large;
+    font-weight: bold;
+  }
+  #loginStyling {
+    border-radius: 10px;
+    padding: 10px;
+    width: 100px;
+    background-color: rgb(29, 161, 242);
+    color: white;
+  }
+}
+</style>
