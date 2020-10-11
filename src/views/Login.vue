@@ -1,9 +1,21 @@
 <template>
   <div id="container">
-    <p class="ptagStyling">Email</p>
-    <input type="text" id="email-input" v-model="email" />
-    <p class="ptagStyling">Password</p>
-    <input type="password" id="password-input" v-model="password" />
+    <div id="formStyling">
+      <p class="ptagStyling">Email</p>
+      <input
+        type="text"
+        id="email-input"
+        v-model="email"
+        placeholder="Enter your email "
+      />
+      <p class="ptagStyling">Password</p>
+      <input
+        type="password"
+        id="password-input"
+        v-model="password"
+        placeholder="Type your password"
+      />
+    </div>
     <h2 @click="loginUser" id="loginStyling">Login</h2>
     <h3>{{ loginStatus }}</h3>
   </div>
@@ -45,12 +57,12 @@ export default {
             console.log(response);
             this.loginStatus = "success";
             cookies.set("loginToken", response.data.loginToken);
-            this.$store.commit('username',response.data.username);
-            this.$store.commit("userId",response.data.userId);
+            cookies.set("username", response.data.username);
+            cookies.set("userId", response.data.userId);
+            this.$store.commit("username", response.data.username);
+            this.$store.commit("userId", response.data.userId);
             //send usernto home page
             this.$router.push({ name: "home-page" });
-
-            
           }
         })
         .catch(error => {
@@ -65,16 +77,31 @@ export default {
 
 <style lang="scss" scoped>
 #container {
-  .ptagStyling {
-    font-size: large;
-    font-weight: bold;
+  display: grid;
+  justify-items: center;
+  align-items: center;
+  row-gap: 6vh;
+  margin-top: 10vh;
+  #formStyling {
+    display: grid;
+    row-gap: 4vh;
+    background:  rgb(29, 161, 242);
+    padding: 20px;
+    text-align: center;
+    color:white;
+    border-radius:10px ;
+    .ptagStyling {
+      font-size: large;
+      font-weight: bold;
+    }
   }
   #loginStyling {
     border-radius: 10px;
-    padding: 10px;
+    padding: 8px;
     width: 100px;
     background-color: rgb(29, 161, 242);
     color: white;
+    text-align: center;
   }
 }
 </style>

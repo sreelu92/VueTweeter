@@ -1,0 +1,116 @@
+<template>
+  <div id="container">
+    <button class="commentbtnStyling" @click="show">Edit</button>
+    <div v-if="isTrue">
+      <textarea v-model="messages"></textarea>
+      <button @click="editComment">Submit</button>
+    </div>
+    <button class="commentbtnStyling" @click="deleteComment">Delete</button>
+  </div>
+</template>
+
+<script>
+import axios from "axios";
+import cookies from "vue-cookies";
+export default {
+  name: "editcomment-page",
+  data() {
+    return {
+      messages: "",
+      isTrue: "",
+      token: cookies.get("loginToken"),
+      userId: cookies.get("userId"),
+    };
+  },
+  props: {
+    commentsid: Number,
+    anotherid: Number
+  },
+  methods: {
+    editComment: function() {
+      if (this.anotherid == this.userId) {
+        axios
+          .request({
+            url: "https://tweeterest.ml/api/comments",
+
+            method: "PATCH",
+            headers: {
+              "Content-Type": "application/json",
+              "X-Api-Key": "5GakGJ6glNqzt5rxIP5ON3KkBIgrLaZODehane6UFhUzc"
+            },
+            data: {
+              loginToken: this.token,
+              commentId: this.commentsid,
+
+              content: this.messages
+            }
+          })
+          .then(response => {
+            console.log(response);
+            this.$emit("updateList", response);
+            this.isTrue = false;
+          })
+          .catch(error => {
+            console.log(error);
+          });
+      } else {
+        this.status = " You cannot edit other's tweet";
+      }
+    },
+    show: function() {
+      if (this.anotherid == this.userId) {
+        this.isTrue = true;
+      } else {
+        this.isTrue = false;
+      }
+    },
+    deleteComment: function() {
+      console.log(this.anotherid)
+      console.log(this.userId)
+     
+      if (this.anotherid == this.userId) {
+        axios
+          .request({
+            url: "https://tweeterest.ml/api/comments",
+
+            method: "DELETE",
+            headers: {
+              "Content-Type": "application/json",
+              "X-Api-Key": "5GakGJ6glNqzt5rxIP5ON3KkBIgrLaZODehane6UFhUzc"
+            },
+            data: {
+              loginToken: this.token,
+              commentId: this.commentsid
+            }
+          })
+          .then(response => {
+            console.log(response);
+
+            this.$emit("updateList", response);
+          })
+          .catch(error => {
+            console.log(error);
+          });
+      } else {
+        this.status = "";
+      }
+    }
+  }
+};
+</script>
+
+<style lang="scss" scoped>
+#container{
+  display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(150px,1fr));
+    justify-items: center;
+    align-items: center;
+  .commentbtnStyling{
+    width:100px;
+    height:30px;
+    
+  }
+
+}
+
+</style>

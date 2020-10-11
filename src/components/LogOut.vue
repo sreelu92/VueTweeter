@@ -1,8 +1,6 @@
 <template>
   <div id="container">
-    <h2>Delete Your Profile</h2>
-    <input type="password" id="passwordInput" v-model="password" />
-    <button id="deletebtnStyling" @click="deleteProfile">Delete</button>
+    <button id="logoutButton" @click="logOut">Log Out</button>
   </div>
 </template>
 
@@ -10,20 +8,17 @@
 import cookies from "vue-cookies";
 import axios from "axios";
 export default {
-  name: "delete-page",
+  name: "logout-page",
   data() {
     return {
-      token: cookies.get("loginToken"),
-      password: ""
+      token: cookies.get("loginToken")
     };
   },
   methods: {
-    deleteProfile: function() {
-      console.log(this.token);
-      console.log(this.password);
+    logOut: function() {
       axios
         .request({
-          url: "https://tweeterest.ml/api/users",
+          url: "https://tweeterest.ml/api/login",
 
           method: "DELETE",
           headers: {
@@ -31,13 +26,14 @@ export default {
             "X-Api-Key": "5GakGJ6glNqzt5rxIP5ON3KkBIgrLaZODehane6UFhUzc"
           },
           data: {
-            loginToken: this.token,
-            password: this.password
+            loginToken: this.token
           }
         })
         .then(response => {
           console.log(response);
           this.$router.push({ name: "welcome-page" });
+          cookies.remove("loginToken");
+          cookies.remove("userId");
         })
         .catch(error => {
           console.log(error);
@@ -49,14 +45,15 @@ export default {
 
 <style lang="scss" scoped>
 #container {
-  display: grid;
-  #deletebtnStyling {
-    width: 150px;
-    height: 30px;
-    background: rgb(29, 161, 242);
+  #logoutButton {
+    position: absolute;
+    top: 1vh;
+    left: 60vw;
+    border-radius: 5px;
+    padding: 5px;
+    width: 90px;
+    background-color: rgb(29, 161, 242);
     color: white;
-    border-radius: 20px;
-    text-align: center;
   }
 }
 </style>

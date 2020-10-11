@@ -1,29 +1,27 @@
 <template>
-    <div id="container">
-        <div id="tweeterContainer">
-            <textarea  id="tweetTextarea" v-model="tweets" ></textarea><br>
-            <button @click="createTweet" id="tweetButton">Tweet</button>
-            <h3 id="tweeth1">{{chats}}</h3>
-
-        </div>
-
+  <div id="container">
+    <div id="tweetStyle">
+      <h3 id="tweeth3tag">Post your tweets here</h3>
+      <textarea id="tweetTextarea" v-model="tweets" placeholder="Max 200 character" rows="4" cols="30"></textarea><br />
+      <button  @click="createTweet" id="tweetButton">Tweet</button>
     </div>
+  </div>
 </template>
 
 <script>
 import cookies from "vue-cookies";
 import axios from "axios";
-    export default {
-        name:"create-tweet",
-        data() {
-            return {
-                tweets: "",
-                token: cookies.get("loginToken"),
-                 chats:''
-
-            }
-        },
-        methods: {
+export default {
+  name: "create-tweet",
+  data() {
+    return {
+      tweets: "",
+      token: cookies.get("loginToken"),
+      chats: []
+    };
+  },
+  
+  methods: {
     createTweet: function() {
       axios
         .request({
@@ -35,45 +33,50 @@ import axios from "axios";
             "X-Api-Key": "5GakGJ6glNqzt5rxIP5ON3KkBIgrLaZODehane6UFhUzc"
           },
           data: {
-          content:this.tweets,
-          loginToken:this.token
+            content: this.tweets,
+            loginToken: this.token
           }
         })
         .then(response => {
-            console.log(response)
-            this.chats=response.data.content
-         
-        
+          console.log(response);
+
+          this.chats.push(response.data);
+          this.$store.commit("updateTweet", response.data);
         })
         .catch(error => {
           console.log(error);
         });
     }
   }
-
-        
-    }
+};
 </script>
 
 <style lang="scss" scoped>
-#container{
+#container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  #tweetStyle {
     display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
-    #tweeterContainer {
-        #tweetTextarea{
-            margin-top: 4vh;
-            margin-left: 8vw;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
 
-        }
-        #tweetButton{
-            margin-left: 50vw;
-        }
-        #tweeth1{
-            margin-left:30vw ;
-        }
+    #tweetTextarea {
+      margin-top: 4vh;
+      margin-left: 8vw;
     }
+    #tweetButton {
+      margin-left: 50vw;
+      background: rgb(29, 161, 242);
+      padding:5px;
+      color:white;
+      width:50px;
+
+    }
+    #tweeth1 {
+      margin-left: 30vw;
+    }
+    #tweeth3tag{
+      text-align: center;
+    }
+  }
 }
-
-
-
 </style>

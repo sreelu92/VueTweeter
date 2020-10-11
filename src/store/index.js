@@ -6,7 +6,11 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     username:"",
-    userid:""
+    userid:"",
+    tweets:[],
+    count:[]
+   
+  
   },
   mutations: {
     username:function(state,name){
@@ -16,7 +20,18 @@ export default new Vuex.Store({
     userId:function(state,id){
       state.userid=id;
 
+    },
+    updateTweet:function(state,tweeter)
+    {
+      state.tweets.push(tweeter);
+    },
+    updateList:function(state,users){
+      state.count.push=users;
     }
+   
+    
+    
+
   },
   actions: {},
   modules: {}

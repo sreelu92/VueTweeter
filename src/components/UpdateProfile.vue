@@ -1,24 +1,35 @@
 <template>
-  <div>
-      <p>Email</p>
-      <input type="text" id="updateEmail" v-model="email">
-      <p>Password</p>
-      <input type="password" id="updatePass" v-model="password">
-      <p>Bio</p>
-      <textarea id="updateText" v-model="bio"></textarea>
-    <button @click="updateProfile">Update</button>
+  <div id="container">
+    <h2>Update Your Profile</h2>
+    <h3>{{ status }}</h3>
+    <h3>Email</h3>
+    <input type="text" id="updateEmail" v-model="email" />
+    <h3>Username</h3>
+    <input type="text" id="updateUsername" v-model="username">
+    <h3>Password</h3>
+    <input type="password" id="updatePass" v-model="password" />
+    <h3>Bio</h3>
+    <textarea id="updateText" v-model="bio"></textarea>
+    <h3>Birthdate</h3>
+    <input type="text" placeholder="yyyy/mm/dd" id="updateBirthdate" v-model="birthdate">
+    <button id="updatebtnStyling" @click="updateProfile">Update</button>
   </div>
 </template>
 
 <script>
-import axios from 'axios'
+import axios from "axios";
+import cookies from "vue-cookies";
 export default {
   name: "update-page",
   data() {
     return {
       email: "",
       password: "",
-      bio: ""
+      bio: "",
+      token: cookies.get("loginToken"),
+      status: "",
+      username:"",
+      birthdate:""
     };
   },
   methods: {
@@ -33,21 +44,26 @@ export default {
             "X-Api-Key": "5GakGJ6glNqzt5rxIP5ON3KkBIgrLaZODehane6UFhUzc"
           },
           data: {
-              email:this.email,
-              password:this.password,
-              bio:this.bio
+            email: this.email,
+            password: this.password,
+            bio: this.bio,
+            loginToken: this.token,
+            username:this.username,
+            birthdate:this.birthdate
           }
         })
         .then(response => {
           console.log(response);
-        //   this.username = response.data[0].username;
-        //   this.email = response.data[0].email;
-        //   this.bio = response.data[0].bio;
-        //   this.birthdate = response.data[0].birthdate;
-        console.log("updated")
+          console.log("updated");
+          if (this.email == "" ||  this.password == "" || this.bio == ""||this.birthdate==""||this.username=="") {
+            this.status = "Update failed";
+          } else {
+            this.status = "Profile successfully updated";
+          }
         })
         .catch(error => {
           console.log(error);
+          this.status = "Something went wrong";
         });
     }
   }
@@ -55,4 +71,16 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+#container {
+  display: grid;
+  #updatebtnStyling{
+    width: 150px;
+    height: 30px;
+    background: rgb(29, 161, 242);
+    color: white;
+    border-radius: 20px;
+    text-align: center;
+  }
+ 
+}
 </style>

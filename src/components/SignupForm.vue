@@ -1,15 +1,17 @@
 <template>
   <div id="container">
+    <div id="formStyling">
     <p>Email</p>
-    <input type="text" id="email-input" v-model="email" size="20" />
+    <input class="inputStyling" type="text" id="email-input" v-model="email"  />
     <p>Username</p>
-    <input type="text" id="username-input" v-model="username" />
+    <input class="inputStyling" type="text" id="username-input" v-model="username" />
     <p>Password</p>
-    <input type="password" id="pawwsord-input" v-model="password" />
+    <input class="inputStyling" type="password" id="pawwsord-input" v-model="password" />
     <p>Bio</p>
-    <textarea id="bio-input" v-model="bio"></textarea>
+    <textarea class="inputStyling" id="bio-input" v-model="bio" placeholder="Character limit 200"></textarea>
     <p>Birthday</p>
-    <input type="text" id="birthday-input" v-model="birthday" />
+    <input class="inputStyling" type="text" id="birthday-input" v-model="birthday" />
+    </div>
     <h3 @click="signupUser" id="signupStyling">Sign Up</h3>
     <h2>{{ status }}</h2>
   </div>
@@ -63,6 +65,9 @@ export default {
           cookies.set("loginToken", response.data.loginToken);
           this.$store.commit('username',response.data.username);
           this.$store.commit("userId",response.data.userId);
+          cookies.set('userId',response.data.userId);
+          cookies.set('username',response.data.username);
+
 
 
           //send to home page
@@ -84,12 +89,30 @@ export default {
   display: grid;
   font-size: large;
   font-weight: bold;
+  justify-items: center;
+  align-items: center;
+  row-gap: 4vh;
+  .inputStyling{
+    height:30px;
+    width:200px;
+  }
+  #formStyling{
+    display: grid;
+    text-align: center;
+    row-gap: 3vh;
+    background:rgb(29, 161, 242); 
+    padding:28px;
+    border-radius:10px ;
+    color: white;
+
+  }
   #signupStyling {
     border-radius: 10px;
     padding: 10px;
     width: 100px;
     background-color: rgb(29, 161, 242);
     color: white;
+    text-align: center;
   }
 }
 </style>

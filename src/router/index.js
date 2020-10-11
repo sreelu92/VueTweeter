@@ -5,7 +5,9 @@ import LoginPage from "../views/Login.vue";
 import WelcomePage from "../views/Welcome.vue";
 import HomePage from "../views/Home.vue";
 import ProfilePage from "../views/Profile.vue";
-
+import DiscoverPage from "../views/Discover.vue";
+import TweetsPage from "../views/Tweets.vue";
+import FeedPage from "../views/FeedPage.vue";
 
 Vue.use(VueRouter);
 
@@ -39,7 +41,24 @@ const routes = [
     name:"profile-page",
     component: ProfilePage
 
-  } 
+  } ,
+  {
+    path:"/discover",
+    name:"discover-page",
+    component: DiscoverPage
+
+  } ,
+  {
+    path:"/tweets",
+    name:"tweets-page",
+    component:TweetsPage
+  },
+  {
+    path:"/feeds",
+    name:"feed-page",
+    component:FeedPage
+  }
+  
   
 ];
 

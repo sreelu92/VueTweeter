@@ -1,41 +1,64 @@
 <template>
-  <div>
-    <div id="container">
+  <div id="container">
+    <header-page></header-page>
+    <div class="stylings" id="profile">
       <h2>My Profile</h2>
       <h3>{{ "Username:" + "" + username }}</h3>
       <h3>{{ "Email:" + "" + email }}</h3>
       <h3>{{ "Bio:" + "" + bio }}</h3>
       <h3>{{ "Birthdate:" + "" + birthdate }}</h3>
+      
     </div>
-    <update-page></update-page>
-    <delete-page></delete-page>
+    <div class="stylings">
+      <follower-page></follower-page>
+    </div>
+    <div class="stylings">
+      <myfollower-page></myfollower-page>
+    </div>
+    <div class="stylings" id="updatediv">
+      <update-page></update-page>
+    </div>
+    <div class="stylings" id="deletediv">
+      <delete-page></delete-page>
+    </div>
   </div>
 </template>
 
 <script>
 import axios from "axios";
-import DeletePage from '../components/Delete.vue';
-import UpdatePage from '../components/UpdateProfile.vue';
+import DeletePage from "../components/Delete.vue";
+import UpdatePage from "../components/UpdateProfile.vue";
+import FollowerPage from "../components/Followers.vue";
+import MyfollowerPage from "../components/Myfollowers.vue";
+import HeaderPage from "../components/Header.vue";
+import cookies from "vue-cookies";
 
 export default {
   name: "profile-page",
-  components:{
-      DeletePage,
-      UpdatePage
-
+  components: {
+    DeletePage,
+    UpdatePage,
+    FollowerPage,
+    MyfollowerPage,
+    HeaderPage
   },
 
   data() {
     return {
+      token: cookies.get("loginToken"),
+      userid: cookies.get("userId"),
+
       username: "",
       email: "",
       bio: "",
-      birthdate: "",
-      
+      birthdate: ""
     };
   },
   mounted() {
     this.getInfo();
+    if (this.token == undefined) {
+      this.$router.push({ name: "welcome-page" });
+    }
   },
   methods: {
     getInfo: function() {
@@ -49,7 +72,7 @@ export default {
             "X-Api-Key": "5GakGJ6glNqzt5rxIP5ON3KkBIgrLaZODehane6UFhUzc"
           },
           params: {
-            userId: this.$store.state.userid
+            userId: this.userid
           }
         })
         .then(response => {
@@ -58,13 +81,12 @@ export default {
           this.email = response.data[0].email;
           this.bio = response.data[0].bio;
           this.birthdate = response.data[0].birthdate;
-          
         })
         .catch(error => {
           console.log(error);
         });
     },
-    
+   
   }
 };
 </script>
@@ -72,7 +94,26 @@ export default {
 <style lang="scss" scoped>
 #container {
   display: grid;
+  min-height: 20vh;
+  width: 100%;
+  row-gap: 2vh;
   justify-items: center;
   align-items: center;
+  .stylings {
+    text-align: center;
+    border: 1px solid grey;
+    padding: 35px;
+    border-radius: 10px;
+  }
+  #profile {
+    display: grid;
+    row-gap: 2vh;
+  }
+  #updatediv {
+    display: grid;
+  }
+  #deletediv {
+    display: grid;
+  }
 }
 </style>
