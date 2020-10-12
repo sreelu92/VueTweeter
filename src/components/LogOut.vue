@@ -55,5 +55,15 @@ export default {
     background-color: rgb(29, 161, 242);
     color: white;
   }
+  @media only screen and(min-width:600px) {
+    #logoutButton{
+      font-size: x-large;
+      padding: 15px;
+      top:2vh;
+      left:70vw;
+      width:150px;
+    }
+  }
+
 }
 </style>

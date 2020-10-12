@@ -1,13 +1,14 @@
 <template>
   <div id="container">
     <button id="editStyling" @click="showButton">Edit</button>
-    <textarea
-      v-if="isShow"
-      v-model="newContent"
-      type="text"
-      placeholder="Edit your tweet here"
-    ></textarea>
-    <button v-if="isShow" @click="editTweets">Submit</button>
+    <div id="editContent" v-if="isShow">
+      <textarea
+        v-model="newContent"
+        type="text"
+        placeholder="Edit your tweet here"
+      ></textarea>
+      <button id="submitBtn" @click="editTweets">Submit</button>
+    </div>
   </div>
 </template>
 
@@ -63,11 +64,27 @@ export default {
 <style lang="scss" scoped>
 #container {
   #editStyling {
-    width: 100px;
+    width: 70px;
     height: 30px;
     background: rgb(29, 161, 242);
     color: white;
     border-radius: 5px;
+  }
+  @media only screen and(min-width:600px) {
+    
+    #editStyling {
+      width: 200px;
+
+      font-size: x-large;
+      height: 55px;
+      
+    }
+    #editContent {
+        #submitBtn {
+          width: 50%;
+          font-size: x-large;
+        }
+      }
   }
 }
 </style>

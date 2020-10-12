@@ -2,9 +2,15 @@
   <div id="container">
     <div id="tweetStyle">
       <h3 id="tweeth3tag">Post your tweets here</h3>
-      <textarea id="tweetTextarea" v-model="tweets" placeholder="Max 200 character" rows="4" cols="30"></textarea><br />
-      <button  @click="createTweet" id="tweetButton">Tweet</button>
+      <textarea
+        id="tweetTextarea"
+        v-model="tweets"
+        placeholder="Max 200 character"
+      ></textarea
+      ><br />
+      <button @click="createTweet" id="tweetButton">Tweet</button>
     </div>
+    <h3 id="statusStyling">{{ status }}</h3>
   </div>
 </template>
 
@@ -17,10 +23,11 @@ export default {
     return {
       tweets: "",
       token: cookies.get("loginToken"),
-      chats: []
+      chats: [],
+      status: ""
     };
   },
-  
+
   methods: {
     createTweet: function() {
       axios
@@ -42,6 +49,7 @@ export default {
 
           this.chats.push(response.data);
           this.$store.commit("updateTweet", response.data);
+          this.status = "Tweet successfully posted";
         })
         .catch(error => {
           console.log(error);
@@ -54,28 +62,43 @@ export default {
 <style lang="scss" scoped>
 #container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+
   #tweetStyle {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    justify-items: center;
+    align-items: center;
+    row-gap: 2vh;
 
     #tweetTextarea {
-      margin-top: 4vh;
-      margin-left: 8vw;
+      line-height: 3em;
+      width:100%;
     }
     #tweetButton {
       margin-left: 50vw;
       background: rgb(29, 161, 242);
-      padding:5px;
-      color:white;
-      width:50px;
+      padding: 5px;
+      color: white;
+      width: 50px;
+    }
+  }
 
+  @media only screen and(min-width:600px) {
+    #tweetStyle {
+      #tweeth3tag {
+        font-size: 2.5em;
+      }
+
+      #tweetTextarea {
+        line-height: 8em;
+      }
+      #tweetButton {
+        width: 110px;
+        padding: 17px;
+        font-size: x-large;
+      }
     }
-    #tweeth1 {
-      margin-left: 30vw;
-    }
-    #tweeth3tag{
-      text-align: center;
+    #statusStyling{
+      font-size:xx-large;
     }
   }
 }

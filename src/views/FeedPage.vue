@@ -1,7 +1,7 @@
 <template>
     <div id="container">
         <header-page></header-page>
-        <h2>Tweets</h2>
+        <h2 id="h2Styling">Tweets</h2>
         <alltweets-page></alltweets-page><br><br><br><br><br><br><br><br>
         <footer-page></footer-page>
 
@@ -33,6 +33,14 @@ import FooterPage from "../components/Footer.vue";
     align-items: center;
     min-height: 10vh;
     row-gap: 8vh;
+    @media only screen and(min-width:600px) {
+        min-height: 20vh;
+        #h2Styling{
+            font-size:3em;
+        }
+
+    }
+
 }
 
 </style>

@@ -1,15 +1,15 @@
 <template>
   <div id="container">
     <div id="formStyling">
-    <p>Email</p>
+    <p class="ptagStyling">Email</p>
     <input class="inputStyling" type="text" id="email-input" v-model="email"  />
-    <p>Username</p>
+    <p class="ptagStyling">Username</p>
     <input class="inputStyling" type="text" id="username-input" v-model="username" />
-    <p>Password</p>
+    <p class="ptagStyling">Password</p>
     <input class="inputStyling" type="password" id="pawwsord-input" v-model="password" />
-    <p>Bio</p>
-    <textarea class="inputStyling" id="bio-input" v-model="bio" placeholder="Character limit 200"></textarea>
-    <p>Birthday</p>
+    <p class="ptagStyling">Bio</p>
+    <textarea class="inputStyling" id="bio-input" v-model="bio" placeholder="Character limit 200" rows="4" cols="40" ></textarea>
+    <p class="ptagStyling">Birthday</p>
     <input class="inputStyling" type="text" id="birthday-input" v-model="birthday" />
     </div>
     <h3 @click="signupUser" id="signupStyling">Sign Up</h3>
@@ -114,5 +114,26 @@ export default {
     color: white;
     text-align: center;
   }
+  @media only screen and(min-width:600px) {
+    #formStyling{
+      padding: 15%;
+      background-color: rgb(29, 161, 242);
+    }
+    .inputStyling{
+      height:35px;
+      width:300px;
+    }
+    .ptagStyling{
+      font-size: xx-large;
+    }
+    #signupStyling{
+      border-radius: 20px;
+      width: 150px;
+      font-size:x-large;
+      padding: 20px;
+    }
+   
+  }
+
 }
 </style>

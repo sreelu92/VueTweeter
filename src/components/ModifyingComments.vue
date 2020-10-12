@@ -1,9 +1,9 @@
 <template>
   <div id="container">
     <button class="commentbtnStyling" @click="show">Edit</button>
-    <div v-if="isTrue">
+    <div v-if="isTrue" id="commentEditing">
       <textarea v-model="messages"></textarea>
-      <button @click="editComment">Submit</button>
+      <button id="btncmntEdt" @click="editComment">Submit</button>
     </div>
     <button class="commentbtnStyling" @click="deleteComment">Delete</button>
   </div>
@@ -110,6 +110,22 @@ export default {
     height:30px;
     
   }
+  @media only screen and(min-width:600px) {
+    .commentbtnStyling{
+      padding:8px;
+      font-size: x-large;
+      height:50px;
+    }
+    #commentEditing{
+      #btncmntEdt{
+        padding: 8px;
+        font-size:larger;
+      }
+
+    }
+    
+  }
+
 
 }
 

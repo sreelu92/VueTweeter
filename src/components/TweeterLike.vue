@@ -129,5 +129,14 @@ export default {
     left: 12vw;
     top: 4vh;
   }
+  @media only screen and(min-width:600px) {
+    #h4Styling{
+      font-size: x-large;
+      left:8vw;
+    }
+  }
+
+ 
+
 }
 </style>

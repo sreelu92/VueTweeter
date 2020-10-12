@@ -20,16 +20,22 @@
 </script>
 
 <style lang="scss" scoped>
-*{
-    margin: 0;
-    padding:0;
-}
+
 #container{
     #iconImage1{
-        width:20%;
-       margin-right:70%;
+        width:25%;
 
     }
+    @media only screen and(min-width:600px) {
+        #iconImage1{
+            width:60%;
+         margin-right: 5vw;
+
+
+        }
+
+    }
+
 
 }
 

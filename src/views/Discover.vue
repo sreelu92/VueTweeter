@@ -6,10 +6,10 @@
     <button class="Styling" @click="getfullInfo">View All Users</button>
     <div id="profileContainer">
       <div id="profileStyling" v-for="user in users" :key="user.userId">
-        <h3>{{ "Username:" + "" + user.username }}</h3>
-        <h3>{{ "Email:" + "" + user.email }}</h3>
-        <h3>{{ "Bio:" + " " + user.bio }}</h3>
-        <h3>{{ "Birthdate:" + " " + user.birthdate }}</h3>
+        <h3 class="h3Styling">{{ "Username:" + "" + user.username }}</h3>
+        <h3 class="h3Styling">{{ "Email:" + "" + user.email }}</h3>
+        <h3 class="h3Styling">{{ "Bio:" + " " + user.bio }}</h3>
+        <h3 class="h3Styling">{{ "Birthdate:" + " " + user.birthdate }}</h3>
 
         <follow-page :userid="user.userId"></follow-page>
       </div>
@@ -122,7 +122,7 @@ export default {
 #container {
   display: grid;
   grid-template-columns: repeat(autofit, minmax(250px, 1fr));
-  row-gap: 8vh;
+  row-gap: 7vh;
   min-height: 10vh;
   justify-items: center;
   align-items: center;
@@ -148,6 +148,27 @@ export default {
       border-radius: 10px;
     }
   }
+    @media only screen and(min-width:600px) {
+      row-gap: 12vh;
+      #profilehtag{
+        font-size: xx-large;
+      }
+      .Styling{
+        width:200px;
+        height: 60px;
+        font-size: x-large;
+      }
+      #profileContainer{
+        #profileStyling{
+          padding: 60px;
+        }
+        .h3Styling{
+          font-size: xx-large;
+        }
+      }
+
+    }
+
  
 }
 </style>

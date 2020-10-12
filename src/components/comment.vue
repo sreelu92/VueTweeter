@@ -5,13 +5,13 @@
         <button class="commentBtn" :class="{ toggled: isShow }" @click="isShow = !isShow">Comment</button>
         <button class="commentBtn" @click=" viewComment">View Comments</button>
       </div>
-      <div v-if="isShow">
+      <div v-if="isShow" id="submitStyling">
         <textarea id="textInput" v-model="comments"></textarea>
-        <button @click="commentTweet">Submit</button>
+        <button id="btnSubmit" @click="commentTweet">Submit</button>
       </div>
       <div v-if="isClicked" id="contentdivStyling">
         <div v-for="show in shows" :key="show.commentId" id="contentStyling">
-          <h4>{{ show.content }}</h4>
+          <h4 id="contenth4">{{ show.content }}</h4>
           <div id="btnsStyling">
             <commentlike-page :commentsid="show.commentId"></commentlike-page>
 
@@ -130,6 +130,33 @@ export default {
       display: grid;
       border: 1px solid grey;
     }
+  }
+  @media only screen and(min-width:600px) {
+    #StylingBtn{
+      .commentBtn{
+        padding: 8px;
+        font-size:x-large;
+
+      }
+      
+    }
+    #submitStyling{
+      #btnSubmit{
+        padding: 8px;
+        font-size: x-large;
+      }
+
+    }
+    #contentdivStyling{
+      #contentStyling{
+        #contenth4{
+          font-size: xx-large;
+        }
+
+      }
+
+    }
+    
   }
 }
 </style>

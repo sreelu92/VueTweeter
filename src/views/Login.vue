@@ -1,23 +1,14 @@
 <template>
   <div id="container">
+    <h3 id="h3Styling">Login here</h3>
     <div id="formStyling">
       <p class="ptagStyling">Email</p>
-      <input
-        type="text"
-        id="email-input"
-        v-model="email"
-        placeholder="Enter your email "
-      />
+      <input class="stylingInput" type="text" id="email-input" v-model="email" placeholder="Enter your email "/>
       <p class="ptagStyling">Password</p>
-      <input
-        type="password"
-        id="password-input"
-        v-model="password"
-        placeholder="Type your password"
-      />
+      <input class="stylingInput" type="password" id="password-input" v-model="password" placeholder="Type your password" />
     </div>
     <h2 @click="loginUser" id="loginStyling">Login</h2>
-    <h3>{{ loginStatus }}</h3>
+    <h3 id="loginh3Styling">{{ loginStatus }}</h3>
   </div>
 </template>
 
@@ -82,6 +73,9 @@ export default {
   align-items: center;
   row-gap: 6vh;
   margin-top: 10vh;
+  #h3Styling{
+    display: none;
+  }
   #formStyling {
     display: grid;
     row-gap: 4vh;
@@ -103,5 +97,32 @@ export default {
     color: white;
     text-align: center;
   }
+  @media only screen and(min-width:600px) {
+    margin-top: 8vh;
+    #h3Styling{
+      display:block;
+      font-size:xx-large;
+    }
+    #formStyling {
+      padding:15%;
+      background:  rgb(29, 161, 242);
+      .ptagStyling{
+        font-size: xx-large;
+      }
+      .stylingInput{
+        width:240px;
+        height: 50px;
+      }
+    }
+    #loginStyling{
+      padding: 15px;
+      font-size: xx-large;
+    }
+    #loginh3Styling{
+      font-size: x-large;
+    }
+
+  }
+
 }
 </style>

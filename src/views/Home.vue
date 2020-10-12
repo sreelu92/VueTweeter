@@ -11,9 +11,9 @@
     <div id="imageStyling">
       <icon-page></icon-page>
       <h3 id="welcomeStyling">{{ "Welcome" + " " + getName }}</h3>
-    </div><br><br><br><br>
+    </div>
 
-    <create-tweet></create-tweet><br><br><br>
+    <create-tweet></create-tweet>
     <footer-page></footer-page>
   </div>
 </template>
@@ -54,6 +54,7 @@ export default {
     follow: function() {
       this.$router.push({ name: "follow-page" });
     }
+
   }
 };
 </script>
@@ -64,26 +65,43 @@ export default {
   justify-items: center;
   align-items: center;
   min-height: 10vh;
-  row-gap: 3vh;
+  row-gap: 7vh;
+  
   #log {
-    position: relative;
     grid-template-columns: repeat(autofit, minmax(250px, 1fr));
     #twitterImage {
       width: 20%;
       margin-right: 10vw;
     }
   }
-#imageStyling{
-  position:relative;
+  #imageStyling {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
 
-  #welcomeStyling {
-    font-size:larger;
-    position: absolute;
-    top:2vh;
-    left:25vw;
+    #welcomeStyling {
+      font-size: larger;
+      margin-top: 2vh;
+      margin-right: 15vw;
+     
+    }
+  }
+  @media only screen and(min-width:600px) {
+    row-gap: 7vh;
+    min-height: 20vh;
+    #log{
+      #twitterImage{
+        margin-right:80vw;
+      }
+    }
+    #imageStyling{
+      grid-template-columns: repeat(auto-fit,minmax(100px,1fr));
+
+      #welcomeStyling{
+        font-size: 2.5em;
+        margin-top: 3vh;
+      }
+    }
   }
 
-}
-  
 }
 </style>

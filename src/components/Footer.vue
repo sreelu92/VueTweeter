@@ -1,10 +1,7 @@
 <template>
   <div id="container">
     <div id="footerStyling">
-        <h5 id="h5Styling">2020 Twitter, Inc.</h5>
-        
-
-
+      <h5 id="h5Styling">2020 Twitter, Inc.</h5>
     </div>
   </div>
 </template>
@@ -16,15 +13,22 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-#container{
-    height:5vh;
-        width:95%;
-        background:rgb(29, 161, 242);
-    #footerStyling{
-        #h5Styling{
-            color:white;
-        }
-        
+#container {
+  height: 1vh;
+  width: 95%;
+  background: rgb(29, 161, 242);
+  #footerStyling {
+    #h5Styling {
+      color: white;
     }
+  }
+  @media only screen and(min-width:600px) {
+      width:96%;
+      #footerStyling{
+          #h5Styling{
+              font-size: x-large;
+          }
+      }
+  }
 }
 </style>

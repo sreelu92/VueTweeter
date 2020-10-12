@@ -3,10 +3,10 @@
     <logout-page></logout-page>
 
     <div id="pageStyling">
-      <h4 @click="home">Home</h4>
-      <h4 @click="discover">Discover</h4>
-      <h4 @click="MyTweets">My Tweets</h4>
-      <h4 @click="feedPage">Feed Page</h4>
+      <h4 class="h4textStyling" @click="home">Home</h4>
+      <h4 class="h4textStyling" @click="discover">Discover</h4>
+      <h4 class="h4textStyling" @click="MyTweets">My Tweets</h4>
+      <h4 class="h4textStyling" @click="feedPage">Feed Page</h4>
     </div>
   </div>
 </template>
@@ -47,5 +47,15 @@ export default {
     color: white;
     font-size: smaller;
   }
+  @media only screen and(min-width:600px) {
+    #pageStyling{
+      padding: 70px;
+      width:80%;
+      .h4textStyling{
+        font-size: x-large;
+      }
+    }
+  }
+
 }
 </style>

@@ -171,5 +171,21 @@ export default {
   #statusStyling {
     text-align: center;
   }
+  @media only screen and(min-width:600px) {
+    .followStyling{
+      width:200px;
+      height:50px;
+      font-size:x-large;
+      padding:12px;
+
+    }
+    #followerStyling{
+      font-size:x-large;
+      row-gap: 4vh;
+      padding:18px;
+    }
+
+  }
+
 }
 </style>

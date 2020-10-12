@@ -3,9 +3,9 @@
     <div id="container">
       <div id="con" v-for="tweet in tweets" :key="tweet.tweetId">
        
-        <h3>{{"Username:"+""+ tweet.username }}</h3>
-        <h3>{{"Tweet:"+""+ tweet.content }}</h3>
-        <h3>{{"Tweeted on:"+""+ tweet.createdAt }}</h3>
+        <h3 class="alltweets">{{"Username:"+""+ tweet.username }}</h3>
+        <h3 class="alltweets">{{"Tweet:"+""+ tweet.content }}</h3>
+        <h3 class="alltweets">{{"Tweeted on:"+""+ tweet.createdAt }}</h3>
         <tweeterlike-page :usersid="tweet.userId" :tweetid="tweet.tweetId" ></tweeterlike-page>
 
         <comment-page  :tweetid="tweet.tweetId"></comment-page>
@@ -70,9 +70,20 @@ export default {
       display: grid;
       row-gap: 2vh;
       text-align: center;
-        border:1px solid black;
+      border:1px solid black;
 
         
     }
+    @media only screen and(min-width:600px) {
+      #con{
+        .alltweets{
+          font-size: xx-large;
+        }
+
+
+      }
+
+    }
+
 }
 </style>
