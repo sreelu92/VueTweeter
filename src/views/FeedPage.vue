@@ -40,6 +40,9 @@ import FooterPage from "../components/Footer.vue";
         }
 
     }
+    @media only screen and(min-width:1020px) {
+    width:99%;
+  }
 
 }
 

@@ -94,12 +94,30 @@ export default {
       }
     }
     #imageStyling{
+ 
       grid-template-columns: repeat(auto-fit,minmax(100px,1fr));
 
       #welcomeStyling{
         font-size: 2.5em;
         margin-top: 3vh;
       }
+    }
+  }
+  @media only screen and(min-width:1020px){
+    min-height:9vh;
+    row-gap:4vh;
+    #log{
+      #twitterImage{
+        width:10%;
+      }
+
+    }
+    #imageStyling{
+
+      grid-template-columns: repeat(2,1fr);
+      
+
+
     }
   }
 

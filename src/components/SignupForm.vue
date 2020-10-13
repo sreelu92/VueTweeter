@@ -134,6 +134,16 @@ export default {
     }
    
   }
+  @media only screen and(min-width:1020px) {
+    #formStyling{
+      padding: 50px;
+      #bio-input{
+        font-size: larger;
+      }
+    }
+
+  }
+
 
 }
 </style>

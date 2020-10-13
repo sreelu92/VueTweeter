@@ -29,12 +29,22 @@
     @media only screen and(min-width:600px) {
         #iconImage1{
             width:60%;
-         margin-right: 5vw;
+            margin-right: 5vw;
+            margin-bottom: 3vh;
 
 
         }
 
     }
+    @media only screen and(min-width:1020px){
+        #iconImage1{
+            width: 16%;
+            margin-bottom: 2vh;
+            margin-top: 0;
+        }
+
+    }
+
 
 
 }

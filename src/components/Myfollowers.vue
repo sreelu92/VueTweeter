@@ -6,7 +6,6 @@
     </div>
     <div id="mydataStyling">
       <div id="infoStyling" v-for="follower in followers" :key="follower.userId">
-        <h3>{{ "UserId:" + "" + follower.id }}</h3>
         <h3>{{ "Email:" + "" + follower.email }}</h3>
         <h3>{{ "Username:" + "" + follower.username }}</h3>
         <h3>{{ "Bio:" + "" + follower.bio }}</h3>
@@ -87,5 +86,14 @@ export default {
 
     }
   }
+  @media only screen and(min-width:600px) {
+    .myfollowerStyle{
+      font-size: x-large;
+      height: 50px;
+      width:170px;
+    }
+
+  }
+
 }
 </style>

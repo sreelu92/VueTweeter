@@ -21,10 +21,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-* {
-  margin: 0;
-  padding: 0;
-}
+
 #container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -70,6 +67,8 @@ export default {
     }
   }
   @media only screen and(min-width:1020px) {
+    min-height: 80vh;
+
 
   }
 }

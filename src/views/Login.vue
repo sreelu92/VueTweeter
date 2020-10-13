@@ -112,6 +112,7 @@ export default {
       .stylingInput{
         width:240px;
         height: 50px;
+        font-size:x-large;
       }
     }
     #loginStyling{
@@ -123,6 +124,21 @@ export default {
     }
 
   }
+  @media only screen and(min-width:1020px) {
+    row-gap: 3vh;
+    #h3Styling{ 
+      font-size:3em;
+    }
+    #formStyling {
+      padding:6%;
+      .stylingInput{
+        font-size:x-large;
+      }
+    }
+
+
+  }
+
 
 }
 </style>

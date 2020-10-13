@@ -10,7 +10,6 @@
         <button class="btn2Styling" @click="deleteTweet(chat.tweetId)">
           Delete
         </button>
-
         <edit-page
           :tweetid="chat.tweetId"
           @contentChanged="updateArray"
@@ -170,5 +169,10 @@ export default {
       }
     }
   }
+  @media only screen and(min-width:1020px) {
+    width:99%;
+   row-gap: 14vh;
+  }
+
 }
 </style>

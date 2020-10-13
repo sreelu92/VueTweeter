@@ -2,7 +2,7 @@
   <div id="container">
     <button class="commentbtnStyling" @click="show">Edit</button>
     <div v-if="isTrue" id="commentEditing">
-      <textarea v-model="messages"></textarea>
+      <textarea v-model="messages" placeholder="Edit your comment here" id="commentUpdate"></textarea>
       <button id="btncmntEdt" @click="editComment">Submit</button>
     </div>
     <button class="commentbtnStyling" @click="deleteComment">Delete</button>
@@ -125,6 +125,17 @@ export default {
     }
     
   }
+  @media only screen and(min-width:1020px) {
+    #commentEditing{
+      #commentUpdate{
+        line-height: 3em;
+        font-size:large;
+      }
+
+    }
+  }
+
+
 
 
 }

@@ -5,7 +5,7 @@
       <textarea
         v-model="newContent"
         type="text"
-        placeholder="Edit your tweet here"
+        placeholder="Edit your tweet here" id="editings"
       ></textarea>
       <button id="submitBtn" @click="editTweets">Submit</button>
     </div>
@@ -80,6 +80,11 @@ export default {
       
     }
     #editContent {
+      #editings{
+        line-height: 4em;
+        font-size:x-large;
+        width:100%;
+      }
         #submitBtn {
           width: 50%;
           font-size: x-large;

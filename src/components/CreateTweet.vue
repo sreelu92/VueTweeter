@@ -6,8 +6,7 @@
         id="tweetTextarea"
         v-model="tweets"
         placeholder="Max 200 character"
-      ></textarea
-      ><br />
+      ></textarea>
       <button @click="createTweet" id="tweetButton">Tweet</button>
     </div>
     <h3 id="statusStyling">{{ status }}</h3>
@@ -30,30 +29,36 @@ export default {
 
   methods: {
     createTweet: function() {
-      axios
-        .request({
-          url: "https://tweeterest.ml/api/tweets",
+      if (this.tweets != "") {
+        axios
+          .request({
+            url: "https://tweeterest.ml/api/tweets",
 
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            "X-Api-Key": "5GakGJ6glNqzt5rxIP5ON3KkBIgrLaZODehane6UFhUzc"
-          },
-          data: {
-            content: this.tweets,
-            loginToken: this.token
-          }
-        })
-        .then(response => {
-          console.log(response);
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              "X-Api-Key": "5GakGJ6glNqzt5rxIP5ON3KkBIgrLaZODehane6UFhUzc"
+            },
+            data: {
+              content: this.tweets,
+              loginToken: this.token
+            }
+          })
+          .then(response => {
+            console.log(response);
 
-          this.chats.push(response.data);
-          this.$store.commit("updateTweet", response.data);
-          this.status = "Tweet successfully posted";
-        })
-        .catch(error => {
-          console.log(error);
-        });
+            this.chats.push(response.data);
+            this.$store.commit("updateTweet", response.data);
+            document.getElementById("tweetTextarea").value = "";
+
+            this.status = "Tweet successfully posted";
+          })
+          .catch(error => {
+            console.log(error);
+          });
+      }else{
+        this.status="Type something to post"
+      }
     }
   }
 };
@@ -71,7 +76,7 @@ export default {
 
     #tweetTextarea {
       line-height: 3em;
-      width:100%;
+      width: 100%;
     }
     #tweetButton {
       margin-left: 50vw;
@@ -90,6 +95,7 @@ export default {
 
       #tweetTextarea {
         line-height: 8em;
+        font-size: x-large;
       }
       #tweetButton {
         width: 110px;
@@ -97,8 +103,22 @@ export default {
         font-size: x-large;
       }
     }
-    #statusStyling{
-      font-size:xx-large;
+    #statusStyling {
+      font-size: xx-large;
+    }
+  }
+  @media only screen and(min-width:1020px) {
+    #tweetStyle {
+      #tweeth3tag {
+        font-size: 2em;
+      }
+      #tweetTextarea {
+        width: 100%;
+        line-height: 5em;
+      }
+      #tweetButton {
+        margin-left: 30vw;
+      }
     }
   }
 }

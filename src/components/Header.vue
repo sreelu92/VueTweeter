@@ -3,10 +3,10 @@
     <logout-page></logout-page>
 
     <div id="pageStyling">
-      <h4 class="h4textStyling" @click="home">Home</h4>
-      <h4 class="h4textStyling" @click="discover">Discover</h4>
-      <h4 class="h4textStyling" @click="MyTweets">My Tweets</h4>
-      <h4 class="h4textStyling" @click="feedPage">Feed Page</h4>
+      <router-link class="routerStyling" to="/home"> Home</router-link>
+      <router-link class="routerStyling" to="/discover"> Discover</router-link>
+      <router-link class="routerStyling" to="/tweets">My Tweets</router-link>
+      <router-link class="routerStyling" to="/feeds">Feed Page</router-link>
     </div>
   </div>
 </template>
@@ -18,20 +18,6 @@ export default {
   name: "header-page",
   components: {
     LogoutPage
-  },
-  methods: {
-    home: function() {
-      this.$router.push({ name: "home-page" });
-    },
-    discover: function() {
-      this.$router.push({ name: "discover-page" });
-    },
-    MyTweets: function() {
-      this.$router.push({ name: "tweets-page" });
-    },
-    feedPage: function() {
-      this.$router.push({ name: "feed-page" });
-    }
   }
 };
 </script>
@@ -44,18 +30,29 @@ export default {
     grid-template-columns: repeat(4, 1fr);
     background: rgb(29, 161, 242);
     padding: 25px;
-    color: white;
-    font-size: smaller;
+    .routerStyling{
+      color: white;
+      font-size: small;
+      text-decoration: none;
+
+      }
   }
   @media only screen and(min-width:600px) {
     #pageStyling{
-      padding: 70px;
+      padding: 75px;
       width:80%;
-      .h4textStyling{
+      .routerStyling{
         font-size: x-large;
       }
     }
   }
+  @media only screen and(min-width:1020px){
+    #pageStyling{
+      width:96%;
+      padding:30px;
+    }
+  }
+
 
 }
 </style>

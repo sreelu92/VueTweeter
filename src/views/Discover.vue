@@ -14,7 +14,8 @@
         <follow-page :userid="user.userId"></follow-page>
       </div>
     </div>
-    <h2>{{ status }}</h2><br><br><br><br><br><br><br>
+    <h2>{{ status }}</h2>
+    <br /><br /><br /><br /><br /><br /><br />
     <footer-page></footer-page>
   </div>
 </template>
@@ -148,27 +149,28 @@ export default {
       border-radius: 10px;
     }
   }
-    @media only screen and(min-width:600px) {
-      row-gap: 12vh;
-      #profilehtag{
+  @media only screen and(min-width:600px) {
+    row-gap: 12vh;
+    #profilehtag {
+      font-size: xx-large;
+    }
+    .Styling {
+      width: 200px;
+      height: 60px;
+      font-size: x-large;
+    }
+    #profileContainer {
+      #profileStyling {
+        padding: 60px;
+      }
+      .h3Styling {
         font-size: xx-large;
       }
-      .Styling{
-        width:200px;
-        height: 60px;
-        font-size: x-large;
-      }
-      #profileContainer{
-        #profileStyling{
-          padding: 60px;
-        }
-        .h3Styling{
-          font-size: xx-large;
-        }
-      }
-
     }
+  }
+  @media only screen and(min-width:1020px) {
+    width:99%;
+  }
 
- 
 }
 </style>

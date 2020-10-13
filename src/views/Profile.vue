@@ -21,6 +21,7 @@
     <div class="stylings" id="deletediv">
       <delete-page></delete-page>
     </div>
+    <footer-page></footer-page>
   </div>
 </template>
 
@@ -31,6 +32,7 @@ import UpdatePage from "../components/UpdateProfile.vue";
 import FollowerPage from "../components/Followers.vue";
 import MyfollowerPage from "../components/Myfollowers.vue";
 import HeaderPage from "../components/Header.vue";
+import FooterPage from "../components/Footer.vue";
 import cookies from "vue-cookies";
 
 export default {
@@ -40,7 +42,8 @@ export default {
     UpdatePage,
     FollowerPage,
     MyfollowerPage,
-    HeaderPage
+    HeaderPage,
+    FooterPage
   },
 
   data() {
@@ -115,5 +118,22 @@ export default {
   #deletediv {
     display: grid;
   }
+  @media only screen and(min-width:600px) {
+    min-height: 30vh;
+    .stylings{
+      font-size:xx-large;
+    }
+  }
+
+  @media only screen and(min-width:1020px){
+    width:100%;
+    min-height: 20vh;
+    row-gap: 4vh;
+    .stylings{
+      font-size: x-large;
+      padding: 45px;
+    }
+  }
+
 }
 </style>

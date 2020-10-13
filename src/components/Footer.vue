@@ -15,7 +15,7 @@ export default {
 <style lang="scss" scoped>
 #container {
   height: 1vh;
-  width: 95%;
+  width: 97%;
   background: rgb(29, 161, 242);
   #footerStyling {
     #h5Styling {
@@ -30,5 +30,10 @@ export default {
           }
       }
   }
+  @media only screen and(min-width:1020px){
+    width:99%;
+   
+  }
+
 }
 </style>

@@ -1,13 +1,15 @@
 <template>
   <div id="container">
     <h2 id="followerHtag">People You Follows</h2>
-    <div>
+    <div id="followingBtn">
       <button class="followerStyle" @click="follower">Following</button>
     </div>
     <div id="infoDiv">
       <div
-        id="dataStyling" v-for="follower in followers" :key="follower.userId">
-        <h3>{{ "UserId:" + "" + follower.userId }}</h3>
+        id="dataStyling"
+        v-for="follower in followers"
+        :key="follower.userId"
+      >
         <h3>{{ "Email:" + "" + follower.email }}</h3>
         <h3>{{ "Username:" + "" + follower.username }}</h3>
         <h3>{{ "Bio:" + "" + follower.bio }}</h3>
@@ -28,8 +30,8 @@ export default {
   data() {
     return {
       userid: cookies.get("userId"),
-      token:cookies.get('loginToken'),
-      followers: [],
+      token: cookies.get("loginToken"),
+      followers: []
     };
   },
   methods: {
@@ -67,8 +69,8 @@ export default {
             "X-Api-Key": "5GakGJ6glNqzt5rxIP5ON3KkBIgrLaZODehane6UFhUzc"
           },
           data: {
-            loginToken:this.token,
-            followId:userId
+            loginToken: this.token,
+            followId: userId
           }
         })
         .then(response => {
@@ -86,7 +88,7 @@ export default {
 <style lang="scss" scoped>
 #container {
   display: grid;
- 
+
   #followerHtag {
     text-align: center;
   }
@@ -101,8 +103,8 @@ export default {
   #infoDiv {
     display: grid;
     row-gap: 2vh;
-     justify-items: center;
-  align-items: center;
+    justify-items: center;
+    align-items: center;
     #dataStyling {
       display: grid;
       row-gap: 2vh;
@@ -122,7 +124,35 @@ export default {
     }
   }
   @media only screen and(min-width:600px) {
-    
+    #followingBtn {
+      .followerStyle {
+        font-size: x-large;
+        height: 50px;
+      }
+    }
+    #infoDiv {
+      #dataStyling {
+        align-items: center;
+        justify-items: center;
+
+        .followStyling {
+          font-size: x-large;
+          height: 60px;
+        }
+      }
+    }
+  }
+  @media only screen and(min-width:1020px){
+     #infoDiv {
+      #dataStyling {
+        .followStyling {
+          font-size:large;
+          height: 60px;
+          
+        }
+      }
+    }
+
   }
 
 }

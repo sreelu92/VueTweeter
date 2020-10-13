@@ -6,7 +6,7 @@
         <button class="commentBtn" @click=" viewComment">View Comments</button>
       </div>
       <div v-if="isShow" id="submitStyling">
-        <textarea id="textInput" v-model="comments"></textarea>
+        <textarea id="textInput" v-model="comments" placeholder="Type your comments"></textarea>
         <button id="btnSubmit" @click="commentTweet">Submit</button>
       </div>
       <div v-if="isClicked" id="contentdivStyling">
@@ -145,6 +145,11 @@ export default {
         padding: 8px;
         font-size: x-large;
       }
+      #textInput{
+        line-height: 3em;
+        font-size:x-large;
+
+      }
 
     }
     #contentdivStyling{
@@ -157,6 +162,16 @@ export default {
 
     }
     
+  }
+  @media only screen and(min-width:1020px) {
+    #submitStyling{
+      #textInput{
+        line-height: 3em;
+        font-size: x-large;
+
+      }
+
+    }
   }
 }
 </style>

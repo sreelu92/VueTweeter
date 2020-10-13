@@ -2,7 +2,15 @@
   <div id="container">
     <h2>Delete Your Profile</h2>
     <input type="password" id="passwordInput" v-model="password" />
-    <button id="deletebtnStyling" @click="deleteProfile">Delete</button>
+    <button id="deletebtnStyling" @click="deleteMessage">Delete</button>
+    <div v-if="isClicked" id="deleteDiv">
+      <h3>Are you sure?</h3>
+      <div id="deletedivStylings">
+        <button @click="cancelMessage">Cancel</button>
+        <button @click="deleteProfile">Ok</button>
+      </div>
+    </div>
+    <h3>{{ status }}</h3>
   </div>
 </template>
 
@@ -14,7 +22,9 @@ export default {
   data() {
     return {
       token: cookies.get("loginToken"),
-      password: ""
+      password: "",
+      isClicked: false,
+      status: ""
     };
   },
   methods: {
@@ -41,7 +51,14 @@ export default {
         })
         .catch(error => {
           console.log(error);
+          this.status = "Password incorrect";
         });
+    },
+    deleteMessage: function() {
+      this.isClicked = true;
+    },
+    cancelMessage: function() {
+      this.isClicked = false;
     }
   }
 };
@@ -57,6 +74,23 @@ export default {
     color: white;
     border-radius: 20px;
     text-align: center;
+  }
+  #deleteDiv {
+    #deletedivStylings {
+      display: grid;
+    }
+  }
+  @media only screen and(min-width:600px) {
+    #passwordInput {
+      width: 90%;
+      height: 50px;
+      font-size: x-large;
+    }
+    #deletebtnStyling {
+      height: 50px;
+      width: 200px;
+      font-size: x-large;
+    }
   }
 }
 </style>

@@ -3,15 +3,15 @@
     <h2>Update Your Profile</h2>
     <h3>{{ status }}</h3>
     <h3>Email</h3>
-    <input type="text" id="updateEmail" v-model="email" />
+    <input class="inputStyling" type="text" id="updateEmail" v-model="email" />
     <h3>Username</h3>
-    <input type="text" id="updateUsername" v-model="username">
+    <input class="inputStyling" type="text" id="updateUsername" v-model="username">
     <h3>Password</h3>
-    <input type="password" id="updatePass" v-model="password" />
+    <input class="inputStyling" type="password" id="updatePass" v-model="password" />
     <h3>Bio</h3>
-    <textarea id="updateText" v-model="bio"></textarea>
+    <textarea class="inputStyling" id="updateText" v-model="bio"></textarea>
     <h3>Birthdate</h3>
-    <input type="text" placeholder="yyyy/mm/dd" id="updateBirthdate" v-model="birthdate">
+    <input class="inputStyling" type="text" placeholder="yyyy/mm/dd" id="updateBirthdate" v-model="birthdate">
     <button id="updatebtnStyling" @click="updateProfile">Update</button>
   </div>
 </template>
@@ -65,7 +65,8 @@ export default {
           console.log(error);
           this.status = "Something went wrong";
         });
-    }
+    },
+   
   }
 };
 </script>
@@ -81,6 +82,26 @@ export default {
     border-radius: 20px;
     text-align: center;
   }
+  @media only screen and(min-width:600px) {
+    .inputStyling{
+      width:90%;
+      height:50px;
+      font-size:x-large;
+    }
+    #updatebtnStyling{
+      height:50px;
+      width:200px;
+
+      font-size:x-large;
+    }
+
+  }
+  @media only screen and(min-width:1020px) {
+   
+
+  }
+
+
  
 }
 </style>
