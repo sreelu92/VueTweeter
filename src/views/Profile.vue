@@ -79,7 +79,6 @@ export default {
           }
         })
         .then(response => {
-          console.log(response);
           this.username = response.data[0].username;
           this.email = response.data[0].email;
           this.bio = response.data[0].bio;

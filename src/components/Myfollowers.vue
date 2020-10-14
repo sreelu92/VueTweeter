@@ -44,7 +44,6 @@ export default {
           }
         })
         .then(response => {
-          console.log(response);
           if (response.data == 0) {
             this.status = "No followers found";
           } else {

@@ -30,7 +30,6 @@ export default {
           }
         })
         .then(response => {
-          console.log(response);
           this.$router.push({ name: "welcome-page" });
           cookies.remove("loginToken");
           cookies.remove("userId");

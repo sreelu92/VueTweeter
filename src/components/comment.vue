@@ -65,7 +65,6 @@ export default {
           }
         })
         .then(response => {
-          console.log(response);
           this.comments = response.data.content;
           cookies.set("tweetId", response.data.tweetId);
         })
@@ -88,7 +87,6 @@ export default {
           }
         })
         .then(response => {
-          console.log(response);
           this.shows = response.data;
           this.isClicked = !this.isClicked;
         })

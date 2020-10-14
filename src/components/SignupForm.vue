@@ -52,16 +52,11 @@ export default {
           }
         })
         .then(response => {
-         // logic to ensure token was sent
           if (response.data.loginToken == undefined) {
             this.$router.push({ name: "signup-page" });
           }
-        // if(response.data.email==this.email)
-        // {
-        //     this.status="already";
-        // }
+        
         else{
-          console.log(response);
           cookies.set("loginToken", response.data.loginToken);
           this.$store.commit('username',response.data.username);
           this.$store.commit("userId",response.data.userId);
@@ -122,6 +117,7 @@ export default {
     .inputStyling{
       height:35px;
       width:300px;
+      font-size:x-large;
     }
     .ptagStyling{
       font-size: xx-large;

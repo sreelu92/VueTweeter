@@ -1,5 +1,7 @@
 <template>
   <div id="container">
+    <router-link class="routerStyling" to="/"> Go Back</router-link>
+
     <h3 id="h3Styling">Login here</h3>
     <div id="formStyling">
       <p class="ptagStyling">Email</p>
@@ -41,23 +43,19 @@ export default {
           }
         })
         .then(response => {
-          //check if login token sent
           if (response.data.loginToken == undefined) {
             this.$router.push({ name: "login-page" });
           } else {
-            console.log(response);
             this.loginStatus = "success";
             cookies.set("loginToken", response.data.loginToken);
             cookies.set("username", response.data.username);
             cookies.set("userId", response.data.userId);
             this.$store.commit("username", response.data.username);
             this.$store.commit("userId", response.data.userId);
-            //send usernto home page
             this.$router.push({ name: "home-page" });
           }
         })
         .catch(error => {
-          //show user login failure
           console.log(error);
           this.loginStatus = "Invalid Login";
         });
@@ -73,6 +71,11 @@ export default {
   align-items: center;
   row-gap: 6vh;
   margin-top: 10vh;
+  .routerStyling{
+    text-decoration: none;
+    color:rgb(29, 161, 242) ;
+    font-size: large;
+  }
   #h3Styling{
     display: none;
   }
@@ -102,6 +105,9 @@ export default {
     #h3Styling{
       display:block;
       font-size:xx-large;
+    }
+    .routerStyling{
+      font-size: xx-large;
     }
     #formStyling {
       padding:15%;

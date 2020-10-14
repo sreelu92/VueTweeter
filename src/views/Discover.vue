@@ -22,6 +22,7 @@
 
 <script>
 import axios from "axios";
+import cookies from 'vue-cookies';
 import FollowPage from "../components/Follows.vue";
 import HeaderPage from "../components/Header.vue";
 import FooterPage from "../components/Footer.vue";
@@ -42,8 +43,15 @@ export default {
       bio: "",
       birthdate: "",
       users: [],
-      status: ""
+      status: "",
+      token: cookies.get("loginToken"),
+
     };
+  },
+  mounted: function() {
+    if (this.token == undefined) {
+      this.$router.push({ name: "welcome-page" });
+    }
   },
   methods: {
     getUserprofile: function() {
@@ -61,7 +69,6 @@ export default {
           }
         })
         .then(response => {
-          console.log(response);
           this.userId = response.data[0].userId;
           this.email = response.data[0].email;
           this.username = response.data[0].username;
@@ -84,7 +91,6 @@ export default {
           }
         })
         .then(response => {
-          console.log(response);
           this.users = response.data;
         })
         .catch(error => {
@@ -107,7 +113,6 @@ export default {
           }
         })
         .then(response => {
-          console.log(response);
           this.status = "Successfully Followed";
         })
         .catch(error => {

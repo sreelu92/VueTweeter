@@ -45,6 +45,11 @@ export default {
       tweetid: ""
     };
   },
+  mounted: function() {
+    if (this.token == undefined) {
+      this.$router.push({ name: "welcome-page" });
+    }
+  },
 
   methods: {
     myTweets: function() {
@@ -62,7 +67,6 @@ export default {
           }
         })
         .then(response => {
-          console.log(response);
           this.chats = response.data;
         })
         .catch(error => {
@@ -90,7 +94,6 @@ export default {
           }
         })
         .then(response => {
-          console.log(response);
           this.chats = response.data;
           this.myTweets();
         })

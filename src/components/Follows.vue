@@ -84,7 +84,6 @@ export default {
           }
         })
         .then(response => {
-          console.log(response);
           return this.isClicked=true;
           
 
@@ -110,7 +109,6 @@ export default {
           }
         })
         .then(response => {
-          console.log(response);
           this.followers=response.data
         })
         .catch(error => {
@@ -133,7 +131,6 @@ export default {
           }
         })
         .then(response => {
-          console.log(response);
          return this.isClicked=false;
         })
         .catch(error => {

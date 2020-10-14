@@ -40,7 +40,6 @@ export default {
           }
         })
         .then(response => {
-          console.log(response);
           this.$root.$emit('ModifyArray',this.tweetid);
           this.status = "Deleted";
         })

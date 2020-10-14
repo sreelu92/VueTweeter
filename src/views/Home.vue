@@ -19,7 +19,6 @@
 </template>
 
 <script>
-//import axios from "axios";
 import cookies from "vue-cookies";
 import CreateTweet from "../components/CreateTweet.vue";
 import IconPage from "../components/Icons.vue";
@@ -40,7 +39,6 @@ export default {
     };
   },
   mounted: function() {
-    //this.getTweet();
     if (this.token == undefined) {
       this.$router.push({ name: "welcome-page" });
     }

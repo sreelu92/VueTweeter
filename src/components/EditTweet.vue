@@ -45,7 +45,6 @@ export default {
           }
         })
         .then(response => {
-          console.log(response);
           this.newContent = response.data;
           this.$emit("contentChanged", response.data.content);
           this.isShow = false;

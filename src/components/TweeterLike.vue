@@ -1,10 +1,18 @@
 <template>
   <div id="container">
     <img
-      id="imageStyling"
+      v-if="!isLike"
+      class="imageStyling"
       @click="tweetLike"
       src="https://miro.medium.com/max/600/0*XPXGV1Av9qlckqka.png"
-      alt="image of comment icon"
+      alt="image of tweet like icon"
+    />
+    <img
+      v-if="isLike"
+      class="imageStyling"
+      @click="deleteTweet"
+      src="https://insights.dice.com/wp-content/uploads/2019/05/Facebook-dislike-thumbs-down-hate-Dice.png"
+      alt="tweet unlike icon"
     />
     <h4 id="h4Styling">{{ this.like }}</h4>
   </div>
@@ -17,10 +25,12 @@ export default {
   name: "tweeterlike-page",
   data() {
     return {
-      count:this.count,
 
       token: cookies.get("loginToken"),
-      like: ""
+      idUser:cookies.get('userId'),
+      like: "",
+      likesAmount: [],
+      isLike: false
     };
   },
   props: {
@@ -28,84 +38,77 @@ export default {
     usersid: Number
   },
   mounted: function() {
-    this.viewtweetLike();
-  },
-  computed: {
-    counting() {
-      return this.$store.state.count;
+    axios
+      .request({
+        url: "https://tweeterest.ml/api/tweet-likes",
 
-    }
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          "X-Api-Key": "5GakGJ6glNqzt5rxIP5ON3KkBIgrLaZODehane6UFhUzc"
+        },
+        params: {
+          tweetId: this.tweetid
+        }
+      })
+      .then(response => {
+        this.like = response.data.length;
+
+        this.likesAmount = response.data;
+        for (let i = 0; i < this.likesAmount.length; i++) {
+          if (this.likesAmount[i].userId==this.idUser) {
+            this.isLike =true;
+          }
+        }
+      })
+      .catch(error => {
+        console.log(error);
+      });
   },
 
   methods: {
     tweetLike: function() {
-      
-      if (this.count == 0) {
-        axios
-          .request({
-            url: "https://tweeterest.ml/api/tweet-likes",
-
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-              "X-Api-Key": "5GakGJ6glNqzt5rxIP5ON3KkBIgrLaZODehane6UFhUzc"
-            },
-            data: {
-              loginToken: this.token,
-              tweetId: this.tweetid
-            }
-          })
-          .then(response => {
-            console.log(response);
-            this.count = 1;
-            this.viewtweetLike();
-
-          })
-          .catch(error => {
-            console.log(error);
-          });
-      } else {
-        axios
-          .request({
-            url: "https://tweeterest.ml/api/tweet-likes",
-
-            method: "DELETE",
-            headers: {
-              "Content-Type": "application/json",
-              "X-Api-Key": "5GakGJ6glNqzt5rxIP5ON3KkBIgrLaZODehane6UFhUzc"
-            },
-            data: {
-              loginToken: this.token,
-              tweetId: this.tweetid
-            }
-          })
-          .then(response => {
-            console.log(response);
-            this.count = 0;
-            this.viewtweetLike();
-          })
-          .catch(error => {
-            console.log(error);
-          });
-      }
-    },
-
-    viewtweetLike: function() {
       axios
         .request({
           url: "https://tweeterest.ml/api/tweet-likes",
 
-          method: "GET",
+          method: "POST",
           headers: {
             "Content-Type": "application/json",
             "X-Api-Key": "5GakGJ6glNqzt5rxIP5ON3KkBIgrLaZODehane6UFhUzc"
           },
-          params: {
+          data: {
+            loginToken: this.token,
             tweetId: this.tweetid
           }
         })
         .then(response => {
-          this.like = response.data.length;
+          this.isLike = true;
+          this.like=this.like+1;
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    },
+    deleteTweet: function() {
+      axios
+        .request({
+          url: "https://tweeterest.ml/api/tweet-likes",
+
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+            "X-Api-Key": "5GakGJ6glNqzt5rxIP5ON3KkBIgrLaZODehane6UFhUzc"
+          },
+          data: {
+            loginToken: this.token,
+            tweetId: this.tweetid
+          }
+        })
+        .then(response => {
+          this.isLike = false;
+          this.like = this.like-1;
+
         })
         .catch(error => {
           console.log(error);
@@ -118,7 +121,7 @@ export default {
 <style lang="scss" scoped>
 #container {
   position: relative;
-  #imageStyling {
+  .imageStyling {
     position: absolute;
     left: 0;
     top: 3vh;
@@ -130,13 +133,10 @@ export default {
     top: 4vh;
   }
   @media only screen and(min-width:600px) {
-    #h4Styling{
+    #h4Styling {
       font-size: x-large;
-      left:8vw;
+      left: 8vw;
     }
   }
-
- 
-
 }
 </style>

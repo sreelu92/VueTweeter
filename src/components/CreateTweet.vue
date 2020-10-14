@@ -45,7 +45,6 @@ export default {
             }
           })
           .then(response => {
-            console.log(response);
 
             this.chats.push(response.data);
             this.$store.commit("updateTweet", response.data);

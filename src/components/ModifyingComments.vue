@@ -46,7 +46,6 @@ export default {
             }
           })
           .then(response => {
-            console.log(response);
             this.$emit("updateList", response);
             this.isTrue = false;
           })
@@ -65,8 +64,6 @@ export default {
       }
     },
     deleteComment: function() {
-      console.log(this.anotherid)
-      console.log(this.userId)
      
       if (this.anotherid == this.userId) {
         axios
@@ -84,7 +81,6 @@ export default {
             }
           })
           .then(response => {
-            console.log(response);
 
             this.$emit("updateList", response);
           })

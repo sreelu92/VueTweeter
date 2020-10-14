@@ -29,8 +29,6 @@ export default {
   },
   methods: {
     deleteProfile: function() {
-      console.log(this.token);
-      console.log(this.password);
       axios
         .request({
           url: "https://tweeterest.ml/api/users",
@@ -46,7 +44,6 @@ export default {
           }
         })
         .then(response => {
-          console.log(response);
           this.$router.push({ name: "welcome-page" });
         })
         .catch(error => {
