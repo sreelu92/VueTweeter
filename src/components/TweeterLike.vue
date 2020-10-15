@@ -133,12 +133,13 @@ export default {
   #h4Styling {
     position: absolute;
     left: 12vw;
-    top: 4vh;
+    top: 3vh;
   }
   @media only screen and(min-width:600px) {
     #h4Styling {
       font-size: x-large;
       left: 9vw;
+      top:3vh;
       
     }
   }

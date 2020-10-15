@@ -110,7 +110,7 @@ export default {
   display: grid;
   min-height: 10vh;
   row-gap: 2vh;
-  width: 80%;
+  width: 100%;
   
  
   #StylingBtn {
