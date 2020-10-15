@@ -1,6 +1,7 @@
 <template>
   <div id="container">
-    <img v-if="!isLike"
+    <img
+      v-if="!isLike"
       class="imageStyling"
       @click="commentLike"
       src="https://miro.medium.com/max/600/0*XPXGV1Av9qlckqka.png"
@@ -30,8 +31,8 @@ export default {
       token: cookies.get("loginToken"),
       idUser: cookies.get("userId"),
       likes: "",
-      count:[],
-      isLike:false
+      count: [],
+      isLike: false
     };
   },
   props: {
@@ -55,8 +56,9 @@ export default {
         this.likes = response.data.length;
         this.count = response.data;
         for (let i = 0; i < this.count.length; i++) {
-          if (this.count[i].userId==this.idUser) {
-            this.isLike =true;
+          if (this.count[i].userId == this.idUser) {
+            this.isLike = true;
+            console.log(response);
           }
         }
       })
@@ -81,8 +83,9 @@ export default {
           }
         })
         .then(response => {
-          this.isLike=true;
-          this.likes=this.likes+1;
+          this.isLike = true;
+          this.likes = this.likes + 1;
+          console.log(response);
         })
         .catch(error => {
           console.log(error);
@@ -104,9 +107,9 @@ export default {
           }
         })
         .then(response => {
-          this.isLike=false;
-          this.likes=this.likes-1;
-          
+          this.isLike = false;
+          this.likes = this.likes - 1;
+          console.log(response);
         })
         .catch(error => {
           console.log(error);
@@ -128,10 +131,20 @@ export default {
     top: 1vh;
   }
   @media only screen and(min-width:600px) {
+    padding:10px;
     #h4Styling {
       font-size: x-large;
-      left: 8vw;
+      left: 10vw;
     }
+    
+  }
+  @media only screen and(min-width:1020px) {
+    .imageStyling {
+      width: 10%;
+    }
+    #h4Styling {
+    left: 5vw;
+  }
   }
 }
 </style>

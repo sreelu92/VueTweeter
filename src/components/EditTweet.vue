@@ -72,7 +72,7 @@ export default {
   @media only screen and(min-width:600px) {
     
     #editStyling {
-      width: 200px;
+      width: 150px;
 
       font-size: x-large;
       height: 55px;

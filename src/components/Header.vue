@@ -5,8 +5,8 @@
     <div id="pageStyling">
       <router-link class="routerStyling" to="/home"> Home</router-link>
       <router-link class="routerStyling" to="/discover"> Discover</router-link>
-      <router-link class="routerStyling" to="/tweets">My Tweets</router-link>
-      <router-link class="routerStyling" to="/feeds">Feed Page</router-link>
+      <router-link class="routerStyling" to="/tweets">Tweets</router-link>
+      <router-link class="routerStyling" to="/feeds">Feeds</router-link>
     </div>
   </div>
 </template>
@@ -30,6 +30,7 @@ export default {
     grid-template-columns: repeat(4, 1fr);
     background: rgb(29, 161, 242);
     padding: 25px;
+    width:80vw;
     .routerStyling{
       color: white;
       font-size: small;
@@ -39,8 +40,7 @@ export default {
   }
   @media only screen and(min-width:600px) {
     #pageStyling{
-      padding: 75px;
-      width:80%;
+      width:90%;
       .routerStyling{
         font-size: x-large;
       }

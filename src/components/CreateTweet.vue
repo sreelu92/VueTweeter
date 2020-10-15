@@ -89,16 +89,16 @@ export default {
   @media only screen and(min-width:600px) {
     #tweetStyle {
       #tweeth3tag {
-        font-size: 2.5em;
+        font-size: 2em;
       }
 
       #tweetTextarea {
-        line-height: 8em;
+        line-height: 6em;
         font-size: x-large;
       }
       #tweetButton {
         width: 110px;
-        padding: 17px;
+        padding: 14px;
         font-size: x-large;
       }
     }

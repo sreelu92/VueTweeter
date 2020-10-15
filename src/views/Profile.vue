@@ -120,13 +120,13 @@ export default {
   @media only screen and(min-width:600px) {
     min-height: 30vh;
     .stylings{
-      font-size:xx-large;
+      font-size:large;
     }
   }
 
   @media only screen and(min-width:1020px){
     width:100%;
-    min-height: 20vh;
+    min-height: 27vh;
     row-gap: 4vh;
     .stylings{
       font-size: x-large;

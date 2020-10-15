@@ -117,6 +117,10 @@ export default {
         padding: 8px;
         font-size:larger;
       }
+      #commentUpdate{
+        line-height: 3em;
+        font-size: x-large;
+      }
 
     }
     

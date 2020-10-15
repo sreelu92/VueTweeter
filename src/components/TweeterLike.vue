@@ -85,6 +85,7 @@ export default {
         .then(response => {
           this.isLike = true;
           this.like=this.like+1;
+          console.log(response)
         })
         .catch(error => {
           console.log(error);
@@ -108,6 +109,8 @@ export default {
         .then(response => {
           this.isLike = false;
           this.like = this.like-1;
+          console.log(response)
+
 
         })
         .catch(error => {
@@ -135,8 +138,22 @@ export default {
   @media only screen and(min-width:600px) {
     #h4Styling {
       font-size: x-large;
-      left: 8vw;
+      left: 9vw;
+      
     }
   }
+  @media only screen and(min-width:1020px) {
+    #h4Styling {
+      font-size: x-large;
+      left: 6vw;
+      top:3vh;
+    }
+    .imageStyling {
+    top: 3vh;
+    width: 10%;
+  }
+
+    }
+
 }
 </style>

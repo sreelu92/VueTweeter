@@ -16,6 +16,7 @@
         ></edit-page>
       </div>
     </div>
+    <h2>{{status}}</h2>
     <br><br><br><br><br><br><br><br><br>
     <footer-page></footer-page>
   </div>
@@ -95,6 +96,7 @@ export default {
         })
         .then(response => {
           this.chats = response.data;
+          this.status="Tweet Deleted"
           this.myTweets();
         })
         .catch(error => {
@@ -147,6 +149,7 @@ export default {
   @media only screen and(min-width:600px) {
     min-height: 12vh;
     row-gap: 12vh;
+    width: 100%;
     .btnStyling {
       width: 200px;
       height: 50px;
@@ -154,7 +157,7 @@ export default {
     }
     #tweetStyling {
     
-      width:90%;
+      width:60%;
       #h3Styling {
         font-size: xx-large;
       }
@@ -175,6 +178,9 @@ export default {
   @media only screen and(min-width:1020px) {
     width:99%;
    row-gap: 14vh;
+   #tweetStyling{
+     width:50%;
+   }
   }
 
 }

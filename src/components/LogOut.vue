@@ -30,6 +30,7 @@ export default {
           }
         })
         .then(response => {
+          console.log(response)
           this.$router.push({ name: "welcome-page" });
           cookies.remove("loginToken");
           cookies.remove("userId");
@@ -57,7 +58,7 @@ export default {
   @media only screen and(min-width:600px) {
     #logoutButton{
       font-size: x-large;
-      padding: 15px;
+      padding: 10px;
       top:2vh;
       left:70vw;
       width:150px;

@@ -64,6 +64,7 @@ export default {
   align-items: center;
   min-height: 10vh;
   row-gap: 7vh;
+  width:100%;
   
   #log {
     grid-template-columns: repeat(autofit, minmax(250px, 1fr));
@@ -96,7 +97,7 @@ export default {
       grid-template-columns: repeat(auto-fit,minmax(100px,1fr));
 
       #welcomeStyling{
-        font-size: 2.5em;
+        font-size: 2em;
         margin-top: 3vh;
       }
     }

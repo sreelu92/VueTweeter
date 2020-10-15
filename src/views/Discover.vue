@@ -113,6 +113,7 @@ export default {
           }
         })
         .then(response => {
+          console.log(response)
           this.status = "Successfully Followed";
         })
         .catch(error => {
@@ -156,6 +157,7 @@ export default {
   }
   @media only screen and(min-width:600px) {
     row-gap: 12vh;
+    width: 100%;
     #profilehtag {
       font-size: xx-large;
     }

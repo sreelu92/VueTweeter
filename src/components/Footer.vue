@@ -23,7 +23,7 @@ export default {
     }
   }
   @media only screen and(min-width:600px) {
-      width:96%;
+      width:95%;
       #footerStyling{
           #h5Styling{
               font-size: x-large;

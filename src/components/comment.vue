@@ -1,6 +1,6 @@
 <template>
   <div id="container">
-    <div>
+  
       <div id="StylingBtn">
         <button class="commentBtn" :class="{ toggled: isShow }" @click="isShow = !isShow">Comment</button>
         <button class="commentBtn" @click=" viewComment">View Comments</button>
@@ -19,7 +19,7 @@
           </div>
         </div>
       </div>
-    </div>
+    
   </div>
 </template>
 
@@ -110,6 +110,8 @@ export default {
   display: grid;
   min-height: 10vh;
   row-gap: 2vh;
+  width: 90%;
+ 
   #StylingBtn {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -130,9 +132,10 @@ export default {
     }
   }
   @media only screen and(min-width:600px) {
+    width: 100%;
     #StylingBtn{
       .commentBtn{
-        padding: 8px;
+        padding: 4px;
         font-size:x-large;
 
       }
@@ -151,9 +154,10 @@ export default {
 
     }
     #contentdivStyling{
+      width:100%;
       #contentStyling{
         #contenth4{
-          font-size: xx-large;
+          font-size:x-large;
         }
 
       }
@@ -164,8 +168,27 @@ export default {
   @media only screen and(min-width:1020px) {
     #submitStyling{
       #textInput{
-        line-height: 3em;
+        line-height: 2em;
         font-size: x-large;
+
+      }
+
+    }
+    #StylingBtn{
+      .commentBtn{
+        font-size:medium;
+        padding: 4px;
+
+      }
+      
+    }
+
+   #contentdivStyling{
+     width:50%;
+      #contentStyling{
+        #contenth4{
+          font-size:x-large;
+        }
 
       }
 

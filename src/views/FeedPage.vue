@@ -43,13 +43,16 @@ export default {
   min-height: 10vh;
   row-gap: 8vh;
   @media only screen and(min-width:600px) {
-    min-height: 20vh;
+    width: 100%;
+    min-height: 24vh;
     #h2Styling {
       font-size: 3em;
     }
   }
   @media only screen and(min-width:1020px) {
-    width: 99%;
+    width: 90%;
+    
+    min-height: 25vh;
   }
 }
 </style>
