@@ -110,12 +110,14 @@ export default {
   display: grid;
   min-height: 10vh;
   row-gap: 2vh;
-  width: 90%;
+  width: 80%;
+  
  
   #StylingBtn {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     column-gap: 2vw;
+    
     .commentBtn {
       color: white;
       background: rgb(29, 161, 242);
