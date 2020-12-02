@@ -57,12 +57,11 @@ export default {
     getUserprofile: function() {
       axios
         .request({
-          url: "https://tweeterest.ml/api/users",
+          url: "",
 
           method: "GET",
           headers: {
             "Content-Type": "application/json",
-            "X-Api-Key": "5GakGJ6glNqzt5rxIP5ON3KkBIgrLaZODehane6UFhUzc"
           },
           params: {
             userId: this.userid
@@ -82,15 +81,15 @@ export default {
     getfullInfo: function() {
       axios
         .request({
-          url: "https://tweeterest.ml/api/users",
+          url: "https://mytweeters.ml/api/users",
 
           method: "GET",
           headers: {
             "Content-Type": "application/json",
-            "X-Api-Key": "5GakGJ6glNqzt5rxIP5ON3KkBIgrLaZODehane6UFhUzc"
           }
         })
         .then(response => {
+          console.log(response)
           this.users = response.data;
         })
         .catch(error => {
@@ -100,12 +99,11 @@ export default {
     following: function(index) {
       axios
         .request({
-          url: "https://tweeterest.ml/api/follows",
+          url: "",
 
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            "X-Api-Key": "5GakGJ6glNqzt5rxIP5ON3KkBIgrLaZODehane6UFhUzc"
           },
           data: {
             loginToken: this.token,

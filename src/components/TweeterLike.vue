@@ -40,18 +40,18 @@ export default {
   mounted: function() {
     axios
       .request({
-        url: "https://tweeterest.ml/api/tweet-likes",
+        url: "https://mytweeters.ml/api/tweetlikes",
 
         method: "GET",
         headers: {
           "Content-Type": "application/json",
-          "X-Api-Key": "5GakGJ6glNqzt5rxIP5ON3KkBIgrLaZODehane6UFhUzc"
         },
         params: {
           tweetId: this.tweetid
         }
       })
       .then(response => {
+        console.log(response)
         this.like = response.data.length;
 
         this.likesAmount = response.data;
@@ -70,12 +70,11 @@ export default {
     tweetLike: function() {
       axios
         .request({
-          url: "https://tweeterest.ml/api/tweet-likes",
+          url: "https://mytweeters.ml/api/tweetlikes",
 
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            "X-Api-Key": "5GakGJ6glNqzt5rxIP5ON3KkBIgrLaZODehane6UFhUzc"
           },
           data: {
             loginToken: this.token,
@@ -94,12 +93,11 @@ export default {
     deleteTweet: function() {
       axios
         .request({
-          url: "https://tweeterest.ml/api/tweet-likes",
+          url: "https://mytweeters.ml/api/tweetlikes",
 
           method: "DELETE",
           headers: {
             "Content-Type": "application/json",
-            "X-Api-Key": "5GakGJ6glNqzt5rxIP5ON3KkBIgrLaZODehane6UFhUzc"
           },
           data: {
             loginToken: this.token,
@@ -107,9 +105,10 @@ export default {
           }
         })
         .then(response => {
+          console.log(response)
+
           this.isLike = false;
           this.like = this.like-1;
-          console.log(response)
 
 
         })

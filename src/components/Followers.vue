@@ -38,12 +38,11 @@ export default {
     follower: function() {
       axios
         .request({
-          url: "https://tweeterest.ml/api/follows",
+          url: "https://mytweeters.ml/api/follows",
 
           method: "GET",
           headers: {
             "Content-Type": "application/json",
-            "X-Api-Key": "5GakGJ6glNqzt5rxIP5ON3KkBIgrLaZODehane6UFhUzc"
           },
           params: {
             userId: this.userid
@@ -61,12 +60,11 @@ export default {
     deleteFollow: function(userId) {
       axios
         .request({
-          url: "https://tweeterest.ml/api/follows",
+          url: "https://mytweeters.ml/api/follows",
 
           method: "DELETE",
           headers: {
             "Content-Type": "application/json",
-            "X-Api-Key": "5GakGJ6glNqzt5rxIP5ON3KkBIgrLaZODehane6UFhUzc"
           },
           data: {
             loginToken: this.token,
@@ -74,6 +72,7 @@ export default {
           }
         })
         .then(response => {
+          console.log(response)
           this.follower();
         })
         .catch(error => {

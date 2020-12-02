@@ -64,25 +64,26 @@ export default {
     }
   },
   methods: {
+    
     getInfo: function() {
       axios
         .request({
-          url: "https://tweeterest.ml/api/users",
+          url: "https://mytweeters.ml/api/users",
 
-          method: "get",
+          method: "GET",
           headers: {
             "Content-Type": "application/json",
-            "X-Api-Key": "5GakGJ6glNqzt5rxIP5ON3KkBIgrLaZODehane6UFhUzc"
           },
           params: {
             userId: this.userid
           }
         })
         .then(response => {
-          this.username = response.data[0].username;
-          this.email = response.data[0].email;
-          this.bio = response.data[0].bio;
-          this.birthdate = response.data[0].birthdate;
+           this.username = response.data.username;
+           this.email = response.data.email;
+           this.bio = response.data.bio;
+           this.birthdate = response.data.birthdate;
+          console.log(response)
         })
         .catch(error => {
           console.log(error);

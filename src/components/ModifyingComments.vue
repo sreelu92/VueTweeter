@@ -31,12 +31,11 @@ export default {
       if (this.anotherid == this.userId) {
         axios
           .request({
-            url: "https://tweeterest.ml/api/comments",
+            url: "https://mytweeters.ml/api/comments",
 
             method: "PATCH",
             headers: {
               "Content-Type": "application/json",
-              "X-Api-Key": "5GakGJ6glNqzt5rxIP5ON3KkBIgrLaZODehane6UFhUzc"
             },
             data: {
               loginToken: this.token,
@@ -46,6 +45,7 @@ export default {
             }
           })
           .then(response => {
+            console.log(response)
             this.$emit("updateList", response);
             this.isTrue = false;
           })
@@ -68,12 +68,11 @@ export default {
       if (this.anotherid == this.userId) {
         axios
           .request({
-            url: "https://tweeterest.ml/api/comments",
+            url: "https://mytweeters.ml/api/comments",
 
             method: "DELETE",
             headers: {
               "Content-Type": "application/json",
-              "X-Api-Key": "5GakGJ6glNqzt5rxIP5ON3KkBIgrLaZODehane6UFhUzc"
             },
             data: {
               loginToken: this.token,

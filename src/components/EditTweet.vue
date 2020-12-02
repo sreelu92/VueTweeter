@@ -31,12 +31,11 @@ export default {
     editTweets: function() {
       axios
         .request({
-          url: "https://tweeterest.ml/api/tweets",
+          url: "https://mytweeters.ml/api/tweets",
 
           method: "PATCH",
           headers: {
             "Content-Type": "application/json",
-            "X-Api-Key": "5GakGJ6glNqzt5rxIP5ON3KkBIgrLaZODehane6UFhUzc"
           },
           data: {
             loginToken: this.token,
@@ -45,6 +44,7 @@ export default {
           }
         })
         .then(response => {
+          console.log(response)
           this.newContent = response.data;
           this.$emit("contentChanged", response.data.content);
           this.isShow = false;

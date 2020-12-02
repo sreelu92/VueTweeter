@@ -32,12 +32,11 @@ export default {
     myfollower: function() {
       axios
         .request({
-          url: "https://tweeterest.ml/api/followers",
+          url:"https://mytweeters.ml/api/followers",
 
           method: "GET",
           headers: {
             "Content-Type": "application/json",
-            "X-Api-Key": "5GakGJ6glNqzt5rxIP5ON3KkBIgrLaZODehane6UFhUzc"
           },
           params: {
             userId: this.userid
@@ -49,6 +48,7 @@ export default {
           } else {
             this.status = "Followers found";
             this.followers = response.data;
+            console.log(response)
           }
         })
         .catch(error => {

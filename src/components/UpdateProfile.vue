@@ -36,12 +36,11 @@ export default {
     updateProfile: function() {
       axios
         .request({
-          url: "https://tweeterest.ml/api/users",
+          url: "https://mytweeters.ml/api/users",
 
           method: "PATCH",
           headers: {
             "Content-Type": "application/json",
-            "X-Api-Key": "5GakGJ6glNqzt5rxIP5ON3KkBIgrLaZODehane6UFhUzc"
           },
           data: {
             email: this.email,
@@ -53,12 +52,11 @@ export default {
           }
         })
         .then(response => {
+          console.log(response)
           console.log("updated");
-          if (this.email == "" ||  this.password == "" || this.bio == ""||this.birthdate==""||this.username=="") {
-            this.status = "Update failed";
-          } else {
-            this.status = "Profile successfully updated";
-          }
+         
+          this.status = "Profile successfully updated";
+          
         })
         .catch(error => {
           console.log(error);

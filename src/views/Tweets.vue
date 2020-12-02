@@ -56,18 +56,18 @@ export default {
     myTweets: function() {
       axios
         .request({
-          url: "https://tweeterest.ml/api/tweets",
+          url: "https://mytweeters.ml/api/tweets",
 
           method: "GET",
           headers: {
             "Content-Type": "application/json",
-            "X-Api-Key": "5GakGJ6glNqzt5rxIP5ON3KkBIgrLaZODehane6UFhUzc"
           },
           params: {
             userId: this.userid
           }
         })
         .then(response => {
+          console.log(response)
           this.chats = response.data;
         })
         .catch(error => {
@@ -81,12 +81,11 @@ export default {
     deleteTweet(tweetId) {
       axios
         .request({
-          url: "https://tweeterest.ml/api/tweets",
+          url: "https://mytweeters.ml/api/tweets",
 
           method: "DELETE",
           headers: {
             "Content-Type": "application/json",
-            "X-Api-Key": "5GakGJ6glNqzt5rxIP5ON3KkBIgrLaZODehane6UFhUzc"
           },
 
           data: {
@@ -95,6 +94,7 @@ export default {
           }
         })
         .then(response => {
+          console.log(response)
           this.chats = response.data;
           this.status="Tweet Deleted"
           this.myTweets();

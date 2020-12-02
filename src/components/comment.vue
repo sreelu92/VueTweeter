@@ -51,12 +51,11 @@ export default {
     commentTweet: function() {
       axios
         .request({
-          url: "https://tweeterest.ml/api/comments",
+          url: "https://mytweeters.ml/api/comments",
 
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            "X-Api-Key": "5GakGJ6glNqzt5rxIP5ON3KkBIgrLaZODehane6UFhUzc"
           },
           data: {
             loginToken: this.token,
@@ -65,6 +64,7 @@ export default {
           }
         })
         .then(response => {
+          console.log(response)
           this.comments = response.data.content;
           cookies.set("tweetId", response.data.tweetId);
         })
@@ -75,18 +75,18 @@ export default {
     viewComment: function() {
       axios
         .request({
-          url: "https://tweeterest.ml/api/comments",
+          url: "https://mytweeters.ml/api/comments",
 
           method: "GET",
           headers: {
             "Content-Type": "application/json",
-            "X-Api-Key": "5GakGJ6glNqzt5rxIP5ON3KkBIgrLaZODehane6UFhUzc"
           },
           params: {
             tweetId: this.tweetid
           }
         })
         .then(response => {
+          console.log(response)
           this.shows = response.data;
           this.isClicked = !this.isClicked;
         })

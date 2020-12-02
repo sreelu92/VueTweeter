@@ -31,12 +31,11 @@ export default {
     deleteProfile: function() {
       axios
         .request({
-          url: "https://tweeterest.ml/api/users",
+          url: "https://mytweeters.ml/api/users",
 
           method: "DELETE",
           headers: {
             "Content-Type": "application/json",
-            "X-Api-Key": "5GakGJ6glNqzt5rxIP5ON3KkBIgrLaZODehane6UFhUzc"
           },
           data: {
             loginToken: this.token,
@@ -44,6 +43,7 @@ export default {
           }
         })
         .then(response => {
+          console.log(response)
           this.$router.push({ name: "welcome-page" });
         })
         .catch(error => {

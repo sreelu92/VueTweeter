@@ -40,18 +40,18 @@ export default {
  mounted () {
    axios
         .request({
-          url: "https://tweeterest.ml/api/follows",
+          url: "https://mytweeters.ml/api/follows",
 
           method: "GET",
           headers: {
             "Content-Type": "application/json",
-            "X-Api-Key": "5GakGJ6glNqzt5rxIP5ON3KkBIgrLaZODehane6UFhUzc"
           },
           params: {
             userId: this.userId
           }
         })
         .then(response => {
+          console.log(response)
           this.following=response.data;
           for(let i=0;i<this.following.length;i++){
             if(this.following[i].userId==this.userid){
@@ -71,12 +71,11 @@ export default {
     followUser: function() {
       axios
         .request({
-          url: "https://tweeterest.ml/api/follows",
+          url: "https://mytweeters.ml/api/follows",
 
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            "X-Api-Key": "5GakGJ6glNqzt5rxIP5ON3KkBIgrLaZODehane6UFhUzc"
           },
           data: {
             loginToken: this.token,
@@ -84,6 +83,7 @@ export default {
           }
         })
         .then(response => {
+          console.log(response)
           return this.isClicked=true;
           
 
@@ -97,18 +97,18 @@ export default {
     follower: function() {
       axios
         .request({
-          url: "https://tweeterest.ml/api/followers",
+          url: "https://mytweeters.ml/api/follows",
 
           method: "GET",
           headers: {
             "Content-Type": "application/json",
-            "X-Api-Key": "5GakGJ6glNqzt5rxIP5ON3KkBIgrLaZODehane6UFhUzc"
           },
           params: {
             userId: this.userid
           }
         })
         .then(response => {
+          console.log(response)
           this.followers=response.data
         })
         .catch(error => {
@@ -118,12 +118,11 @@ export default {
      deleteFollow: function() {
       axios
         .request({
-          url: "https://tweeterest.ml/api/follows",
+          url: "https://mytweeters.ml/api/follows",
 
           method: "DELETE",
           headers: {
             "Content-Type": "application/json",
-            "X-Api-Key": "5GakGJ6glNqzt5rxIP5ON3KkBIgrLaZODehane6UFhUzc"
           },
           data: {
             loginToken:this.token,
@@ -131,6 +130,7 @@ export default {
           }
         })
         .then(response => {
+          console.log(response)
          return this.isClicked=false;
         })
         .catch(error => {

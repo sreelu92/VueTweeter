@@ -32,12 +32,11 @@ export default {
       if (this.tweets != "") {
         axios
           .request({
-            url: "https://tweeterest.ml/api/tweets",
+            url: "https://mytweeters.ml/api/tweets",
 
             method: "POST",
             headers: {
               "Content-Type": "application/json",
-              "X-Api-Key": "5GakGJ6glNqzt5rxIP5ON3KkBIgrLaZODehane6UFhUzc"
             },
             data: {
               content: this.tweets,
@@ -45,6 +44,7 @@ export default {
             }
           })
           .then(response => {
+            console.log(response)
 
             this.chats.push(response.data);
             this.$store.commit("updateTweet", response.data);

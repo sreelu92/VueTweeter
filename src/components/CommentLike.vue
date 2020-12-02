@@ -41,12 +41,11 @@ export default {
   mounted: function() {
     axios
       .request({
-        url: "https://tweeterest.ml/api/comment-likes",
+        url: "https://mytweeters.ml/api/commentlikes",
 
         method: "GET",
         headers: {
           "Content-Type": "application/json",
-          "X-Api-Key": "5GakGJ6glNqzt5rxIP5ON3KkBIgrLaZODehane6UFhUzc"
         },
         params: {
           commentId: this.commentsid
@@ -70,12 +69,11 @@ export default {
     commentLike: function() {
       axios
         .request({
-          url: "https://tweeterest.ml/api/comment-likes",
+          url: "https://mytweeters.ml/api/commentlikes",
 
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            "X-Api-Key": "5GakGJ6glNqzt5rxIP5ON3KkBIgrLaZODehane6UFhUzc"
           },
           data: {
             loginToken: this.token,
@@ -94,12 +92,11 @@ export default {
     deleteComment: function() {
       axios
         .request({
-          url: "https://tweeterest.ml/api/comment-likes",
+          url: "https://mytweeters.ml/api/commentlikes",
 
           method: "DELETE",
           headers: {
             "Content-Type": "application/json",
-            "X-Api-Key": "5GakGJ6glNqzt5rxIP5ON3KkBIgrLaZODehane6UFhUzc"
           },
           data: {
             loginToken: this.token,

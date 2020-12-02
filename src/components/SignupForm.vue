@@ -36,12 +36,12 @@ export default {
     signupUser: function() {
       axios
         .request({
-          url: "https://tweeterest.ml/api/users",
+          url: "https://mytweeters.ml/api/users",
 
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            "X-Api-Key": "5GakGJ6glNqzt5rxIP5ON3KkBIgrLaZODehane6UFhUzc"
+            
           },
           data: {
             email: this.email,
@@ -52,7 +52,8 @@ export default {
           }
         })
         .then(response => {
-          if (response.data.loginToken == undefined) {
+          console.log(response)
+          if (response.data.loginToken== "") {
             this.$router.push({ name: "signup-page" });
           }
         

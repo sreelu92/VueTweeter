@@ -18,12 +18,11 @@ export default {
     logOut: function() {
       axios
         .request({
-          url: "https://tweeterest.ml/api/login",
+          url: "https://mytweeters.ml/api/login",
 
           method: "DELETE",
           headers: {
             "Content-Type": "application/json",
-            "X-Api-Key": "5GakGJ6glNqzt5rxIP5ON3KkBIgrLaZODehane6UFhUzc"
           },
           data: {
             loginToken: this.token

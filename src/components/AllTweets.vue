@@ -3,7 +3,7 @@
       <div id="con" v-for="tweet in tweets" :key="tweet.tweetId">
         <h3 class="alltweets">{{ "Username:" + "" + tweet.username }}</h3>
         <h3 class="alltweets">{{ "Tweet:" + "" + tweet.content }}</h3>
-        <h3 class="alltweets">{{ "Tweeted on:" + "" + tweet.createdAt }}</h3>
+        <h3 class="alltweets">{{ "Tweeted on:" + "" + tweet.created_at }}</h3>
         <tweeterlike-page
           :usersid="tweet.userId"
           :tweetid="tweet.tweetId"
@@ -36,15 +36,15 @@ export default {
     AllTweets: function() {
       axios
         .request({
-          url: "https://tweeterest.ml/api/tweets",
+          url: "https://mytweeters.ml/api/tweets",
 
           method: "GET",
           headers: {
             "Content-Type": "application/json",
-            "X-Api-Key": "5GakGJ6glNqzt5rxIP5ON3KkBIgrLaZODehane6UFhUzc"
           }
         })
         .then(response => {
+          console.log(response)
           this.tweets = response.data;
         })
         .catch(error => {

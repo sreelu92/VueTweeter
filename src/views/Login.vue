@@ -30,12 +30,11 @@ export default {
       this.loginStatus = "Loading";
       axios
         .request({
-          url: "https://tweeterest.ml/api/login",
+          url: "https://mytweeters.ml/api/login",
 
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            "X-Api-Key": "5GakGJ6glNqzt5rxIP5ON3KkBIgrLaZODehane6UFhUzc"
           },
           data: {
             email: this.email,
@@ -53,6 +52,7 @@ export default {
             this.$store.commit("username", response.data.username);
             this.$store.commit("userId", response.data.userId);
             this.$router.push({ name: "home-page" });
+            console.log(response)
           }
         })
         .catch(error => {
